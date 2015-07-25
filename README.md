@@ -1,7 +1,6 @@
 # Errorifier
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/errorifier.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/errorifier/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/errorifier)
 [![Dependency status](http://img.shields.io/david/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/errorifier.svg?style=flat-square)](https://www.npmjs.org/package/errorifier)
