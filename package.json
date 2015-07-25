@@ -1,0 +1,44 @@
+{
+  "name": "errorifier",
+  "description": "Creates Error uniformly.",
+  "homepage": "https://github.com/Kikobeats/errorifier",
+  "version": "0.1.0",
+  "main": "./index.js",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "repository": "Kikobeats/errorifier",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/errorifier/issues"
+  },
+  "keywords": [
+    "custom",
+    "error",
+    "factory",
+    "throw"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "*",
+    "coffee-script": "*",
+    "coffeeify": "*",
+    "gulp": "*",
+    "gulp-header": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "mocha": "*",
+    "should": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "*"
+  },
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.4.0"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
+  "license": "MIT"
+}

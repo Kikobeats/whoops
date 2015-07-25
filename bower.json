@@ -1,0 +1,32 @@
+{
+  "name": "errorifier",
+  "description": "Creates Error uniformly.",
+  "homepage": "https://github.com/Kikobeats/errorifier",
+  "version": "0.1.0",
+  "main": "./dist/errorifier.js",
+  "authors": [
+    {
+      "name": "Kiko Beats",
+      "email": "josefrancisco.verdu@gmail.com",
+      "homepage": "https://github.com/Kikobeats"
+    }
+  ],
+  "repository": "Kikobeats/errorifier",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/errorifier/issues"
+  },
+  "keywords": [
+    "custom",
+    "error",
+    "factory",
+    "throw"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "license": "MIT"
+}
