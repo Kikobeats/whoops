@@ -6,7 +6,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/errorifier.svg?style=flat-square)](https://www.npmjs.org/package/errorifier)
 [![Gratipay](https://img.shields.io/gratipay/Kikobeats.svg?style=flat-square)](https://gratipay.com/~Kikobeats/)
 
-> Trying to adopt a uniform errors policy based in NodeJS errors schema.
+> Adopting an uniform errors policy based in NodeJS errors schema.
 
 ## Why
 
