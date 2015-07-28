@@ -2,7 +2,7 @@
   "name": "errorifier",
   "description": "Creates Error uniformly.",
   "homepage": "https://github.com/Kikobeats/errorifier",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "author": {
     "name": "Kiko Beats",
