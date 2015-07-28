@@ -19,7 +19,9 @@
     "factory",
     "throw"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "coffee-script": "~1.9.3"
+  },
   "devDependencies": {
     "browserify": "*",
     "coffee-script": "*",
