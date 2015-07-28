@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "browserify": "*",
-    "coffee-script": "*",
     "coffeeify": "*",
     "gulp": "*",
     "gulp-header": "*",
