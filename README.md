@@ -16,7 +16,7 @@
 
 The native `Error` global object in JavaScript is broken. It is different depending of your browser of your environment.
 
-I feel that standard NodeJS are more powerful: this follow the same format. For example, if you try to read a file that doesn't exist you have the follow error:
+I feel that [standard NodeJS Errors](https://github.com/rvagg/node-errno) are more powerful: this follow the same format. For example, if you try to read a file that doesn't exist you have the follow error:
 
 ```js
 fs.readFile('filename', function(err, data) {
@@ -100,7 +100,7 @@ throw new Errorifier({
 
 This prints the same as the inline mode, but you can store whatever thing (as `errno` or `foo` in this case) with the error.
 
-## Always return an Error Object
+## Always return an Error object
 
 If you code implementation is **synchronous**, return `Error` object under unexpected behaviors.
 
