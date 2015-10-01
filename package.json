@@ -20,7 +20,8 @@
     "throw"
   ],
   "dependencies": {
-    "coffee-script": "~1.10.0"
+    "coffee-script": "~1.10.0",
+    "format": "~0.2.1"
   },
   "devDependencies": {
     "browserify": "*",
