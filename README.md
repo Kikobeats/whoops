@@ -4,7 +4,7 @@
 [![Dependency status](http://img.shields.io/david/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/errorifier.svg?style=flat-square)](https://www.npmjs.org/package/errorifier)
-[![Gratipay](https://img.shields.io/gratipay/Kikobeats.svg?style=flat-square)](https://gratipay.com/~Kikobeats/)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > Adopting an uniform errors policy based in NodeJS errors schema.
 
