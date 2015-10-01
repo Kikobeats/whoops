@@ -3,15 +3,20 @@
 var fs         = require('fs');
 var Errorifier = require('./index.js');
 
-// Standard NodeJS errors
+console.log('\n[ Standard NodeJS errors ]\n');
 
-fs.readFile('filename', function(err, data) {
+var data;
+
+try {
+  data = fs.readFileSync('filename');
+} catch (err) {
   console.log(err.message);
+
   // { [Error: ENOENT, open 'filename']
   //   errno: 34,
   //   code: 'ENOENT',
   //   path: 'filename' }
-});
+}
 
 // inline mode
 // throw new Errorifier('NotValidJSON, The format of the JSON is invalid');
@@ -24,7 +29,7 @@ var err = new Errorifier({
   foo: 'bar'
 });
 
-console.log('handling err codes');
+console.log('\n[ handling err codes ]\n');
 
 switch (err.code) {
   case 'NotValidJSON':

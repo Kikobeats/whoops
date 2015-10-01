@@ -23,6 +23,6 @@ module.exports = class Errorifier
   _composeMessageFromString: (error, message) ->
     error.message = message
     messageSplit = message.split ','
-    return error if (messageSplit.length < 2)
+    return error if messageSplit.length < 2
     error.code = messageSplit[0].trim()
     error
