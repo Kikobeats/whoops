@@ -1,6 +1,6 @@
 {
   "name": "whoops",
-  "description": "A good constructor for Error.",
+  "description": "Simplification of Error Constructor.",
   "homepage": "https://github.com/Kikobeats/whoops",
   "version": "0.2.0",
   "main": "./dist/whoops.js",
@@ -16,10 +16,11 @@
     "url": "https://github.com/Kikobeats/whoops/issues"
   },
   "keywords": [
-    "custom",
+    "throw",
     "error",
-    "factory",
-    "throw"
+    "simple",
+    "custom",
+    "constructor"
   ],
   "ignore": [
     "**/.*",

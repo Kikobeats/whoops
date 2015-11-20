@@ -1,7 +1,7 @@
 {
-  "name": "custom-error",
-  "description": "A good constructor for Error.",
-  "homepage": "https://github.com/Kikobeats/custom-error",
+  "name": "whoops",
+  "description": "Simplification of Error Constructor.",
+  "homepage": "https://github.com/Kikobeats/whoops",
   "version": "0.2.0",
   "main": "./index.js",
   "author": {
@@ -9,15 +9,16 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/custom-error",
+  "repository": "Kikobeats/whoops",
   "bugs": {
-    "url": "https://github.com/Kikobeats/custom-error/issues"
+    "url": "https://github.com/Kikobeats/whoops/issues"
   },
   "keywords": [
-    "custom",
+    "throw",
     "error",
-    "factory",
-    "throw"
+    "simple",
+    "custom",
+    "constructor"
   ],
   "dependencies": {
     "coffee-script": "*"
