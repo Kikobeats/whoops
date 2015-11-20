@@ -13,7 +13,6 @@ module.exports = class Whoops
     error
 
   _composeMessageFromString: (error, args) ->
-
     argsSize =
       3: ->
         error.name = args[0]
@@ -25,6 +24,5 @@ module.exports = class Whoops
       1: ->
         error.message = args[0]
       0: ->
-
     argsSize[args.length]()
     error
