@@ -13,7 +13,7 @@ describe 'Whoops ::', ->
       (!!err.description).should.be.equal false
       (!!err.message).should.be.equal false
 
-  xdescribe 'object factory', ->
+  describe 'object factory', ->
     it 'providing message', ->
       err = new Whoops
         message: 'damn'

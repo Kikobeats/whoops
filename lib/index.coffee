@@ -5,7 +5,7 @@ module.exports = class Whoops
   constructor: (type) ->
     error = new Error()
     return @_composeMessageFromObject error, type if typeof type is 'object'
-    return @_composeMessageFromString error, Array.prototype.slice.call arguments
+    return @_composeMessageFromString error, arguments
 
   _composeMessageFromObject: (error, fields) ->
     error[property] = value for property, value of fields
