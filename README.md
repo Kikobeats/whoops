@@ -1,12 +1,13 @@
 # Whoops
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
+[![Build Status](http://img.shields.io/travis/Kikobeats/whoops/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/whoops)
 [![Dependency status](http://img.shields.io/david/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Adopting an uniform errors policy based in NodeJS errors schema.
+> Simplification of Error Constructor.
 
 ## Why
 
@@ -14,29 +15,41 @@
 - Using the standard Error interface in browser and NodeJS.
 - Attach extra information, depending of your case of use.
 
-The native `Error` global object in JavaScript is broken. It is different depending of your browser of your environment.
-
-I feel that [standard NodeJS Errors](https://github.com/rvagg/node-errno) are more powerful: this follow the same format. For example, if you try to read a file that doesn't exist you have the follow error:
+Basically turns:
 
 ```js
-fs.readFile('filename', function(err, data) {
-  console.log(err);
-  // { [Error: ENOENT, open 'filename']
-  //   errno: 34,
-  //   code: 'ENOENT',
-  //   path: 'filename' }
+var error = new Error('ENOFILE, Something is wrong');
+error.name = 'DAMNError';
+error.code = 'ENOFILE';
+
+console.log(error.name) // => 'DAMNError: Something is wrong'
+return error;
+```
+
+into more productive Error constructor:
+
+```js
+var Whoops = require('Whoops');
+var error = new Whoops('DAMError', 'ENOFILE', 'Something is wrong');
+
+console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
+return error;
+```
+
+Also support object constructor and possibility to define more fields:
+
+```js
+var error = new Whoops({
+  name: 'DAMError', , ''
+  code: 'ENOFILE'
+  message: Something is wrong
+  path: 'filepath'
 });
 
+console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
+console.log(error.path) // => 'filepath'
+return error;
 ```
-
-The `error` have a `code` that is useful because it's part of the output message. If you try to print the error:
-
-```
-console.log(err.message);
-// => ENOENT, open 'filename'
-```
-
-This library pretend extend NodeJS standard error for whatever error that you need to create.
 
 ## Install
 
@@ -69,13 +82,26 @@ Now, the next time that you need an error you have two ways to create.
 If you don't need to specify to many things associated with the error, you can create it inline mode. Just provide the error type and the description as string:
 
 ```js
-throw new Whoops('NotValidJSON, The format of the JSON is invalid');
+throw new Whoops('JSONError', 'The format of the JSON is invalid');
+
+JSONError: The format of the JSON is invalid
+  at new Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
+  at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
+  at Module._compile (module.js:456:26)
+  at Object.Module._extensions..js (module.js:474:10)
+  at Module.load (module.js:356:32)
+  at Function.Module._load (module.js:312:12)
+  at Function.Module.runMain (module.js:497:10)
+  at startup (node.js:119:16)
+  at node.js:935:3
 ```
 
-This will print the error and the stack trace:
+Additionaly you can provide the error code that will be associated and printed in the message:
 
-```bash
-Error: NotValidJSON, The format of the JSON is invalid
+```js
+throw new Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid');
+
+JSONError: NotValidJSON, The format of the JSON is invalid
   at new Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
   at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
   at Module._compile (module.js:456:26)
@@ -91,6 +117,7 @@ If you need to associate whatever thing with the error, you can use the Object p
 
 ```js
 throw new Whoops({
+  name: 'JSONError',
   code: 'NotValidJSON',
   message: 'The format of the JSON is invalid',
   errno: 127,
@@ -100,7 +127,7 @@ throw new Whoops({
 
 This prints the same as the inline mode, but you can store whatever thing (as `errno` or `foo` in this case) with the error.
 
-## Always return an Error object
+## Always throw an Error object
 
 If you code implementation is **synchronous**, return `Error` object under unexpected behaviors.
 
@@ -117,8 +144,8 @@ callback(new Whoops('LOL, something was wrong') // BEST!
 Now you can associated different type of error with different behavior.
 
 ```js
-switch (err.code) {
-  case 'LOL':
+switch (err.name) {
+  case 'JSONError':
     console.log('your error logic here');
     break;
   default:
