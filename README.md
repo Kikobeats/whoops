@@ -1,9 +1,9 @@
-# Errorifier
+# Whoops
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/errorifier.svg?style=flat-square)
-[![Dependency status](http://img.shields.io/david/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/errorifier.svg?style=flat-square)](https://david-dm.org/Kikobeats/errorifier#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/errorifier.svg?style=flat-square)](https://www.npmjs.org/package/errorifier)
+![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
+[![Dependency status](http://img.shields.io/david/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops)
+[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops#info=devDependencies)
+[![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > Adopting an uniform errors policy based in NodeJS errors schema.
@@ -41,19 +41,19 @@ This library pretend extend NodeJS standard error for whatever error that you ne
 ## Install
 
 ```bash
-npm install errorifier --save
+npm install whoops --save
 ```
 
 If you want to use in the browser (powered by [Browserify](http://browserify.org/)):
 
 ```bash
-bower install errorifier --save
+bower install whoops --save
 ```
 
 and later link in your HTML:
 
 ```html
-<script src="bower_components/errorifier/dist/errorifier.js"></script>
+<script src="bower_components/whoops/dist/whoops.js"></script>
 ```
 
 ## Usage
@@ -61,7 +61,7 @@ and later link in your HTML:
 Load the constructor as a common NodeJS dependency:
 
 ```js
-var Errorifier = require('errorifier');
+var Whoops = require('whoops');
 ```
 
 Now, the next time that you need an error you have two ways to create.
@@ -69,15 +69,15 @@ Now, the next time that you need an error you have two ways to create.
 If you don't need to specify to many things associated with the error, you can create it inline mode. Just provide the error type and the description as string:
 
 ```js
-throw new Errorifier('NotValidJSON, The format of the JSON is invalid');
+throw new Whoops('NotValidJSON, The format of the JSON is invalid');
 ```
 
 This will print the error and the stack trace:
 
 ```bash
 Error: NotValidJSON, The format of the JSON is invalid
-  at new Errorifier (/Users/josefranciscoverdugambin/Projects/errorifier/lib/Errorifier.coffee:6:17)
-  at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/errorifier/example.js:3:7)
+  at new Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
+  at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
   at Module._compile (module.js:456:26)
   at Object.Module._extensions..js (module.js:474:10)
   at Module.load (module.js:356:32)
@@ -90,7 +90,7 @@ Error: NotValidJSON, The format of the JSON is invalid
 If you need to associate whatever thing with the error, you can use the Object param format:
 
 ```js
-throw new Errorifier({
+throw new Whoops({
   code: 'NotValidJSON',
   message: 'The format of the JSON is invalid',
   errno: 127,
@@ -111,7 +111,7 @@ It's correct returns a object in a callback to express a unexpected behavior, bu
 ```js
 callback('LOL something was wrong'); // poor
 callback({message: 'LOL something was wrong' } // poor, but better
-callback(new Errorifier('LOL, something was wrong') // BEST!
+callback(new Whoops('LOL, something was wrong') // BEST!
 ```
 
 Now you can associated different type of error with different behavior.

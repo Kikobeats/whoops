@@ -1,7 +1,7 @@
 {
-  "name": "errorifier",
-  "description": "Creates Error uniformly.",
-  "homepage": "https://github.com/Kikobeats/errorifier",
+  "name": "custom-error",
+  "description": "A good constructor for Error.",
+  "homepage": "https://github.com/Kikobeats/custom-error",
   "version": "0.2.0",
   "main": "./index.js",
   "author": {
@@ -9,9 +9,9 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/errorifier",
+  "repository": "Kikobeats/custom-error",
   "bugs": {
-    "url": "https://github.com/Kikobeats/errorifier/issues"
+    "url": "https://github.com/Kikobeats/custom-error/issues"
   },
   "keywords": [
     "custom",
@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "coffee-script": "~1.10.0",
-    "format": "~0.2.1"
+    "format-util": "~1.0.2"
   },
   "devDependencies": {
     "browserify": "*",
@@ -30,6 +30,7 @@
     "gulp-header": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
+    "is-type": "0.0.1",
     "mocha": "*",
     "should": "*",
     "vinyl-buffer": "*",

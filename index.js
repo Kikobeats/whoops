@@ -1,3 +1,3 @@
 'use strict';
 require('coffee-script/register');
-module.exports = require('./lib/Errorifier');
+module.exports = require('./lib');

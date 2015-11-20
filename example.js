@@ -1,7 +1,7 @@
 'use strict';
 
-var fs         = require('fs');
-var Errorifier = require('./index.js');
+var fs = require('fs');
+var Whoops = require('./index.js');
 
 console.log('\n[ Standard NodeJS errors ]\n');
 
@@ -10,7 +10,11 @@ var data;
 try {
   data = fs.readFileSync('filename');
 } catch (err) {
-  console.log(err.message);
+  console.log(' message :', err.message);
+  console.log(' name\t :',  err.name);
+  console.log(' code\t :',  err.code);
+  console.log(' path\t :',  err.path);
+  console.log(' errno\t :', err.errno);
 
   // { [Error: ENOENT, open 'filename']
   //   errno: 34,
@@ -18,35 +22,45 @@ try {
   //   path: 'filename' }
 }
 
-console.log('\n[ object constructor ]\n');
+console.log('\n[ Whoops Object Constructor ]\n');
 
-var errObjt = new Errorifier({
+var errObjt = new Whoops({
   message: 'The format of the JSON is invalid',
+  name: 'JSONError',
   code: 'NotValidJSON',
+  path: 'filename',
   errno: 127,
   foo: 'bar'
 });
 
-console.log('\n[ handling err codes ]\n');
+console.log(' message :', errObjt.message);
+console.log(' name\t :', errObjt.name);
+console.log(' code\t :', errObjt.code);
+console.log(' path\t :', errObjt.path);
+console.log(' errno\t :', errObjt.errno);
+console.log(' foo\t :', errObjt.foo);
 
-switch (errObjt.code) {
-  case 'NotValidJSON':
-    console.log('your error logic here');
-    break;
-  default:
-    console.log('undefined code');
-    break;
-}
+console.log('\n[ Whoops String constructor ]\n');
 
-// inline mode
-console.log('\n[ string constructor ]\n');
+var errString = new Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid');
 
-var errString = new Errorifier('NotValidJSON, The format of the %s is invalid', 'JSON');
-
-console.log(errString.message);
+console.log(' message :', errString.message);
+console.log(' name\t :', errString.name);
+console.log(' code\t :', errString.code);
 
 console.log('\n[ constructor comparation ]\n');
 
-console.log('same message?', errString.message === errObjt.message);
-console.log('same code?', errString.code === errObjt.code);
-console.log('same typeof?', typeof errString === typeof errObjt);
+console.log('same message?\t', errString.message === errObjt.message);
+console.log('same name?\t', errString.name === errObjt.name);
+console.log('same typeof?\t', typeof errString === typeof errObjt);
+
+console.log('\n[ handling err codes ]\n');
+
+switch (errObjt.name) {
+  case 'JSONError':
+    console.log('your error logic here');
+    break;
+  default:
+    console.log('Standard Error name');
+    break;
+}

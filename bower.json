@@ -1,9 +1,9 @@
 {
-  "name": "errorifier",
-  "description": "Creates Error uniformly.",
-  "homepage": "https://github.com/Kikobeats/errorifier",
+  "name": "whoops",
+  "description": "A good constructor for Error.",
+  "homepage": "https://github.com/Kikobeats/whoops",
   "version": "0.2.0",
-  "main": "./dist/errorifier.js",
+  "main": "./dist/whoops.js",
   "authors": [
     {
       "name": "Kiko Beats",
@@ -11,9 +11,9 @@
       "homepage": "https://github.com/Kikobeats"
     }
   ],
-  "repository": "Kikobeats/errorifier",
+  "repository": "Kikobeats/whoops",
   "bugs": {
-    "url": "https://github.com/Kikobeats/errorifier/issues"
+    "url": "https://github.com/Kikobeats/whoops/issues"
   },
   "keywords": [
     "custom",
