@@ -20,8 +20,7 @@
     "throw"
   ],
   "dependencies": {
-    "coffee-script": "~1.10.0",
-    "format-util": "~1.0.2"
+    "coffee-script": "*"
   },
   "devDependencies": {
     "browserify": "*",
@@ -30,7 +29,7 @@
     "gulp-header": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
-    "is-type": "0.0.1",
+    "is-type": "*",
     "mocha": "*",
     "should": "*",
     "vinyl-buffer": "*",
