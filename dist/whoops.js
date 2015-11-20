@@ -1,6 +1,6 @@
 /**
  * whoops - Simplification of Error Constructor.
- * @version v0.2.0
+ * @version v1.0.0
  * @link    https://github.com/Kikobeats/whoops
  * @license MIT
  */require=function e(r,t,o){function n(i,u){if(!t[i]){if(!r[i]){var c="function"==typeof require&&require;if(!u&&c)return c(i,!0);if(s)return s(i,!0);var f=new Error("Cannot find module '"+i+"'");throw f.code="MODULE_NOT_FOUND",f}var a=t[i]={exports:{}};r[i][0].call(a.exports,function(e){var t=r[i][1][e];return n(t?t:e)},a,a.exports,e,r,t,o)}return t[i].exports}for(var s="function"==typeof require&&require,i=0;i<o.length;i++)n(o[i]);return n}({1:[function(e,r,t){"use strict";var o;r.exports=o=function(){function e(e){var r;return r=new Error,"object"==typeof e?this._composeMessageFromObject(r,e):this._composeMessageFromString(r,arguments)}return e.prototype._composeMessageFromObject=function(e,r){var t,o;for(t in r)o=r[t],e[t]=o;return e.code&&(e.message=e.code+", "+e.message),e},e.prototype._composeMessageFromString=function(e,r){var t;return t={3:function(){return e.name=r[0],e.code=r[1],e.message=e.code+", "+r[2]},2:function(){return e.name=r[0],e.message=r[1]},1:function(){return e.message=r[0]},0:function(){}},t[r.length](),e},e}()},{}],2:[function(e,r,t){},{}],whoops:[function(e,r,t){"use strict";e("coffee-script/register"),r.exports=e("./lib")},{"./lib":1,"coffee-script/register":2}]},{},[]);
