@@ -30,7 +30,7 @@ into more productive Error constructor:
 
 ```js
 var Whoops = require('Whoops');
-var error = new Whoops('DAMError', 'ENOFILE', 'Something is wrong');
+var error = new Whoops('DAMNError', 'ENOFILE', 'Something is wrong');
 
 console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
 return error;
@@ -40,7 +40,7 @@ Also support object constructor and possibility to define more fields:
 
 ```js
 var error = new Whoops({
-  name: 'DAMError', , ''
+  name: 'DAMNError', , ''
   code: 'ENOFILE'
   message: Something is wrong
   path: 'filepath'
@@ -133,7 +133,7 @@ If you code implementation is **synchronous**, return `Error` object under unexp
 
 If you code implementation is **asynchronous**, return `Error` object under unexpected behaviors as well!
 
-It's correct returns a object in a callback to express a unexpected behavior, but the object doesn't have a type and definetly doesn't follow a error interface:
+It's correct to return an object in a callback to express unexpected behavior, but the object doesn't have a type and definitely doesn't follow a error interface:
 
 ```js
 callback('LOL something was wrong'); // poor
