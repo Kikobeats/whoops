@@ -18,7 +18,7 @@
 Basically turns:
 
 ```js
-var error = new Error('ENOFILE, Something is wrong');
+var error = Error('ENOFILE, Something is wrong');
 error.name = 'DAMNError';
 error.code = 'ENOFILE';
 
@@ -30,7 +30,7 @@ into more productive Error constructor:
 
 ```js
 var Whoops = require('Whoops');
-var error = new Whoops('DAMError', 'ENOFILE', 'Something is wrong');
+var error = Whoops('DAMError', 'ENOFILE', 'Something is wrong');
 
 console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
 return error;
@@ -39,7 +39,7 @@ return error;
 Also support object constructor and possibility to define more fields:
 
 ```js
-var error = new Whoops({
+var error = Whoops({
   name: 'DAMError', , ''
   code: 'ENOFILE'
   message: Something is wrong
@@ -82,10 +82,10 @@ Now, the next time that you need an error you have two ways to create.
 If you don't need to specify to many things associated with the error, you can create it inline mode. Just provide the error type and the description as string:
 
 ```js
-throw new Whoops('JSONError', 'The format of the JSON is invalid');
+throw Whoops('JSONError', 'The format of the JSON is invalid');
 
 JSONError: The format of the JSON is invalid
-  at new Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
+  at Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
   at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
   at Module._compile (module.js:456:26)
   at Object.Module._extensions..js (module.js:474:10)
@@ -99,10 +99,10 @@ JSONError: The format of the JSON is invalid
 Additionaly you can provide the error code that will be associated and printed in the message:
 
 ```js
-throw new Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid');
+throw Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid');
 
 JSONError: NotValidJSON, The format of the JSON is invalid
-  at new Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
+  at Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
   at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
   at Module._compile (module.js:456:26)
   at Object.Module._extensions..js (module.js:474:10)
@@ -116,7 +116,7 @@ JSONError: NotValidJSON, The format of the JSON is invalid
 If you need to associate whatever thing with the error, you can use the Object param format:
 
 ```js
-throw new Whoops({
+throw Whoops({
   name: 'JSONError',
   code: 'NotValidJSON',
   message: 'The format of the JSON is invalid',
@@ -138,7 +138,7 @@ It's correct returns a object in a callback to express a unexpected behavior, bu
 ```js
 callback('LOL something was wrong'); // poor
 callback({message: 'LOL something was wrong' } // poor, but better
-callback(new Whoops('LOL, something was wrong') // BEST!
+callback(Whoops('LOL, something was wrong') // BEST!
 ```
 
 Now you can associated different type of error with different behavior.

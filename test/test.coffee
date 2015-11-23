@@ -6,7 +6,7 @@ describe 'Whoops ::', ->
 
   describe 'without factory', ->
     it 'basic', ->
-      err = new Whoops
+      err = Whoops()
       isType.error(err).should.be.equal true
       err.name.should.be.equal 'Error'
       (!!err.code).should.be.equal false
@@ -15,7 +15,7 @@ describe 'Whoops ::', ->
 
   describe 'object factory', ->
     it 'providing message', ->
-      err = new Whoops
+      err = Whoops
         message: 'damn'
 
       isType.error(err).should.be.equal true
@@ -23,7 +23,7 @@ describe 'Whoops ::', ->
       err.message.should.be.equal 'damn'
 
     it 'providing mesage and name', ->
-      err = new Whoops
+      err = Whoops
         name: 'DAMN'
         message: 'something is wrong'
 
@@ -32,7 +32,7 @@ describe 'Whoops ::', ->
       err.message.should.be.equal 'something is wrong'
 
     it 'providing mesage, name and more fields',  ->
-      err = new Whoops
+      err = Whoops
         name: 'DAMN'
         message: 'something is wrong'
         path: process.cwd()
@@ -45,19 +45,19 @@ describe 'Whoops ::', ->
 
   describe 'string factory', ->
     it 'providing message', ->
-      err = new Whoops 'damn'
+      err = Whoops 'damn'
       isType.error(err).should.be.equal true
       err.name.should.be.equal 'Error'
       err.message.should.be.equal 'damn'
 
     it "providing mesage and name", ->
-      err = new Whoops 'DAMN', 'something is wrong'
+      err = Whoops 'DAMN', 'something is wrong'
       isType.error(err).should.be.equal true
       err.name.should.be.equal 'DAMN'
       err.message.should.be.equal 'something is wrong'
 
     it "providing mesage, name and code", ->
-      err = new Whoops 'DAMN', 'ENOCODE', 'something is wrong'
+      err = Whoops 'DAMN', 'ENOCODE', 'something is wrong'
       isType.error(err).should.be.equal true
       err.name.should.be.equal 'DAMN'
       err.code.should.be.equal 'ENOCODE'
