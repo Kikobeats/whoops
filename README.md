@@ -133,7 +133,7 @@ If you code implementation is **synchronous**, return `Error` object under unexp
 
 If you code implementation is **asynchronous**, return `Error` object under unexpected behaviors as well!
 
-It's correct returns a object in a callback to express a unexpected behavior, but the object doesn't have a type and definetly doesn't follow a error interface:
+It's correct to return an object in a callback to express unexpected behavior, but the object doesn't have a type and definitely doesn't follow a error interface:
 
 ```js
 callback('LOL something was wrong'); // poor
