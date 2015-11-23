@@ -2,7 +2,7 @@
   "name": "whoops",
   "description": "Simplification of Error Constructor.",
   "homepage": "https://github.com/Kikobeats/whoops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",

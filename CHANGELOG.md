@@ -1,7 +1,20 @@
+<a name="1.0.1"></a>
+## 1.0.1 (2015-11-23)
+
+
+* Fix typos in README.md ([e9063f2](https://github.com/kikobeats/whoops/commit/e9063f2))
+* Merge branch 'master' of github.com:kikobeats/whoops ([a363134](https://github.com/kikobeats/whoops/commit/a363134))
+* Merge pull request #4 from jorrit/patch-1 ([d9156f6](https://github.com/kikobeats/whoops/commit/d9156f6))
+* rewrite to avoid new ([23e586b](https://github.com/kikobeats/whoops/commit/23e586b))
+* update to upgrade bower.json ([b18589d](https://github.com/kikobeats/whoops/commit/b18589d))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2015-11-20)
 
 
+* 1.0.0 releases ([447ae1e](https://github.com/kikobeats/whoops/commit/447ae1e))
 * refactored and renamed ([cf2b458](https://github.com/kikobeats/whoops/commit/cf2b458))
 * removed extra spaces ([931245d](https://github.com/kikobeats/whoops/commit/931245d))
 * updated ([9bf0fde](https://github.com/kikobeats/whoops/commit/9bf0fde))
@@ -19,9 +32,9 @@
 
 * 0.2.0 releases ([aff1849](https://github.com/kikobeats/whoops/commit/aff1849))
 * Added format for string constructor ([d584188](https://github.com/kikobeats/whoops/commit/d584188))
+* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * improve example ([aa2d318](https://github.com/kikobeats/whoops/commit/aa2d318))
 * little suite of tests 😁 ([5e11def](https://github.com/kikobeats/whoops/commit/5e11def))
-* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * updated ([d5fc2d9](https://github.com/kikobeats/whoops/commit/d5fc2d9))
 
 
@@ -62,9 +75,9 @@
 
 
 * 0.1.0 releases ([594c110](https://github.com/kikobeats/whoops/commit/594c110))
+* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 * added documentation and more examples ([3e68abb](https://github.com/kikobeats/whoops/commit/3e68abb))
 * first approach ([c52341b](https://github.com/kikobeats/whoops/commit/c52341b))
-* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 
 
 
