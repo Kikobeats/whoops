@@ -1,7 +1,23 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2016-01-14)
+
+
+* Add .create method ([1315768](https://github.com/kikobeats/whoops/commit/1315768))
+* Add coffe as devDependency ([ce75ae9](https://github.com/kikobeats/whoops/commit/ce75ae9))
+* Add custom message function in object factory ([470414c](https://github.com/kikobeats/whoops/commit/470414c))
+* bye coffee ([6a3a1d4](https://github.com/kikobeats/whoops/commit/6a3a1d4))
+* bye config ([e920003](https://github.com/kikobeats/whoops/commit/e920003))
+* Little tests refactor ([d3abb53](https://github.com/kikobeats/whoops/commit/d3abb53))
+* Update description and documentation ([0ad3cba](https://github.com/kikobeats/whoops/commit/0ad3cba))
+* Update scripts ([29240d2](https://github.com/kikobeats/whoops/commit/29240d2))
+
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2015-11-23)
 
 
+* 1.0.1 releases ([56e26f2](https://github.com/kikobeats/whoops/commit/56e26f2))
 * Fix typos in README.md ([e9063f2](https://github.com/kikobeats/whoops/commit/e9063f2))
 * Merge branch 'master' of github.com:kikobeats/whoops ([a363134](https://github.com/kikobeats/whoops/commit/a363134))
 * Merge pull request #4 from jorrit/patch-1 ([d9156f6](https://github.com/kikobeats/whoops/commit/d9156f6))
@@ -32,9 +48,9 @@
 
 * 0.2.0 releases ([aff1849](https://github.com/kikobeats/whoops/commit/aff1849))
 * Added format for string constructor ([d584188](https://github.com/kikobeats/whoops/commit/d584188))
-* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * improve example ([aa2d318](https://github.com/kikobeats/whoops/commit/aa2d318))
 * little suite of tests 😁 ([5e11def](https://github.com/kikobeats/whoops/commit/5e11def))
+* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * updated ([d5fc2d9](https://github.com/kikobeats/whoops/commit/d5fc2d9))
 
 
@@ -75,9 +91,9 @@
 
 
 * 0.1.0 releases ([594c110](https://github.com/kikobeats/whoops/commit/594c110))
-* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 * added documentation and more examples ([3e68abb](https://github.com/kikobeats/whoops/commit/3e68abb))
 * first approach ([c52341b](https://github.com/kikobeats/whoops/commit/c52341b))
+* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 
 
 
