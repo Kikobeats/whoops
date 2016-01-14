@@ -7,7 +7,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Simplification of Error Constructor.
+> It makes simple throw qualified errors. Inspired in [errno](https://github.com/rvagg/node-errno) and [create-error-class](https://github.com/floatdrop/create-error-class).
 
 ## Why
 
@@ -18,37 +18,58 @@
 Basically turns:
 
 ```js
-var error = Error('ENOFILE, Something is wrong');
-error.name = 'DAMNError';
-error.code = 'ENOFILE';
+var error = Error('ENOFILE, Something is wrong')
+error.name = 'DAMNError'
+error.code = 'ENOFILE'
 
-console.log(error.name) // => 'DAMNError: Something is wrong'
-return error;
+throw error // => 'DAMNError: ENOFILE, Something is wrong'
 ```
 
-into more productive Error constructor:
+into one line error declaration:
 
 ```js
 var Whoops = require('Whoops');
 var error = Whoops('DAMError', 'ENOFILE', 'Something is wrong');
 
-console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
-return error;
+throw error // => 'DAMNError: ENOFILE, Something is wrong'
 ```
 
-Also support object constructor and possibility to define more fields:
+Also you can create custom class errors for avoid write the name of the error
+all the time:
+
+```js
+var DAMError = Whoops.create('DAMError')
+```
+
+Now you can avoid the first parameter in the inline declaration:
+
+```js
+var error = Whoops('ENOFILE', 'Something is wrong');
+throw error // => 'DAMNError: ENOFILE, Something is wrong'
+```
+
+Constructor also can be executed in object mode for the cases where you need to
+setup more properties associated with the error:
 
 ```js
 var error = Whoops({
   name: 'DAMError', , ''
   code: 'ENOFILE'
-  message: Something is wrong
+  message: 'Something is wrong'
   path: 'filepath'
 });
 
-console.log(error.name) // => 'DAMNError: ENOFILE, Something is wrong'
-console.log(error.path) // => 'filepath'
-return error;
+In this mode you can pass a generator function as message:
+
+var error = Whoops({
+  name: 'DAMError', , ''
+  code: 'ENOFILE',
+  file: 'damnfile'
+  message: ->
+    "Something is wrong with the file '" + this.file "'."
+});
+
+throw error // => "DAMNError: ENOFILE, Something is wrong with the file 'damnfile'"
 ```
 
 ## Install
@@ -69,79 +90,47 @@ and later link in your HTML:
 <script src="bower_components/whoops/dist/whoops.js"></script>
 ```
 
-## Usage
+## API
 
-Load the constructor as a common NodeJS dependency:
+### .constructor([String|Object])
 
-```js
-var Whoops = require('whoops');
-```
+Create a new `Error`. You can use it using two different interfaces.
 
-Now, the next time that you need an error you have two ways to create.
+#### String Constructor
 
-If you don't need to specify to many things associated with the error, you can create it inline mode. Just provide the error type and the description as string:
+Following the schema `.constructor([name], [code], {message})`
 
-```js
-throw Whoops('JSONError', 'The format of the JSON is invalid');
+#### Object Constructor
 
-JSONError: The format of the JSON is invalid
-  at Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
-  at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
-  at Module._compile (module.js:456:26)
-  at Object.Module._extensions..js (module.js:474:10)
-  at Module.load (module.js:356:32)
-  at Function.Module._load (module.js:312:12)
-  at Function.Module.runMain (module.js:497:10)
-  at startup (node.js:119:16)
-  at node.js:935:3
-```
+Whatever property that you pass in an object will be associated with the `Error`.
 
-Additionaly you can provide the error code that will be associated and printed in the message:
+If you pass a function as `message` property will be executed in the context
+of the `Error`.
 
-```js
-throw Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid');
+For both constructor modes, if the `code` of the error is provided will be
+concatenated and the begin of the `message`.
 
-JSONError: NotValidJSON, The format of the JSON is invalid
-  at Whoops (/Users/josefranciscoverdugambin/Projects/whoops/lib/Whoops.coffee:6:17)
-  at Object.<anonymous> (/Users/josefranciscoverdugambin/Projects/whoops/example.js:3:7)
-  at Module._compile (module.js:456:26)
-  at Object.Module._extensions..js (module.js:474:10)
-  at Module.load (module.js:356:32)
-  at Function.Module._load (module.js:312:12)
-  at Function.Module.runMain (module.js:497:10)
-  at startup (node.js:119:16)
-  at node.js:935:3
-```
+### .create({String})
 
-If you need to associate whatever thing with the error, you can use the Object param format:
+Create a new qualified `Error`. All is the same than the normal constructor,
+but in this case you don't have to provide the `name` of the error.
+
+## Extra: Always throw/return an Error!
+
+If you code implementation is
+
+- **synchronous**, throws `Error`. If you just return the `Error` nothings happens!.
+- **asynchronous**, returns `Error` in the first argument of the callback (or using promises).
+
+About asynchronous code, is correct return a `Object` that is not a `Error` in the first argument of the callback to express unexpected behavior, but the `Object` doesn't have a type and definitely can't  follow a error interface for determinate a special behavior:
 
 ```js
-throw Whoops({
-  name: 'JSONError',
-  code: 'NotValidJSON',
-  message: 'The format of the JSON is invalid',
-  errno: 127,
-  foo: 'bar'
-});
-```
-
-This prints the same as the inline mode, but you can store whatever thing (as `errno` or `foo` in this case) with the error.
-
-## Always throw an Error object
-
-If you code implementation is **synchronous**, return `Error` object under unexpected behaviors.
-
-If you code implementation is **asynchronous**, return `Error` object under unexpected behaviors as well!
-
-It's correct to return an object in a callback to express unexpected behavior, but the object doesn't have a type and definitely doesn't follow a error interface:
-
-```js
-callback('LOL something was wrong'); // poor
+callback('LOL something was wrong') // poor
 callback({message: 'LOL something was wrong' } // poor, but better
 callback(Whoops('LOL, something was wrong') // BEST!
 ```
 
-Now you can associated different type of error with different behavior.
+Passing always an `Error` you can can associated different type of error with different behavior:
 
 ```js
 switch (err.name) {

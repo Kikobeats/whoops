@@ -1,6 +1,6 @@
 {
   "name": "whoops",
-  "description": "Simplification of Error Constructor.",
+  "description": "It makes simple throw qualified errors.",
   "homepage": "https://github.com/Kikobeats/whoops",
   "version": "1.0.1",
   "main": "./dist/whoops.js",
