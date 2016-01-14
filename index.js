@@ -1,15 +1,19 @@
 'use strict'
 
+var forEach = require('lodash.foreach')
+
 var FACTORY = {
   OBJECT: function (error, fields) {
-    var property, value
-    for (property in fields) {
-      value = fields[property]
+    forEach(fields, function (value, property) {
       error[property] = value
-    }
-    if (error.code) {
+    })
+
+    if (typeof error.message === 'function')
+      error.message = error.message.call(error)
+
+    if (error.code)
       error.message = error.code + ', ' + error.message
-    }
+
     return error
   },
 

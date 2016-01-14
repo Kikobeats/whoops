@@ -41,5 +41,8 @@
   "scripts": {
     "test": "sh test/test.sh"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash.foreach": "~4.0.0"
+  }
 }

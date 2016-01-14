@@ -24,7 +24,7 @@ describe 'Whoops ::', ->
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
 
-      it 'providing mesage and name', ->
+      it 'providing name and message', ->
         err = Whoops
           name: 'DAMN'
           message: 'something is wrong'
@@ -33,17 +33,40 @@ describe 'Whoops ::', ->
         err.name.should.be.equal 'DAMN'
         err.message.should.be.equal 'something is wrong'
 
-      it 'providing mesage, name and more fields',  ->
+      it 'providing name, message and code', ->
         err = Whoops
           name: 'DAMN'
           message: 'something is wrong'
+          code: 'ENOCODE'
+
+        isType.error(err).should.be.true()
+        err.name.should.be.equal 'DAMN'
+        err.message.should.be.equal 'ENOCODE, something is wrong'
+
+      it 'providing name, message, code and custom fields',  ->
+        err = Whoops
+          name: 'DAMN'
+          message: 'something is wrong'
+          code: 'ENOCODE'
           path: process.cwd()
 
         isType.error(err).should.be.true()
         err.name.should.be.equal 'DAMN'
-        err.message.should.be.equal 'something is wrong'
+        err.message.should.be.equal 'ENOCODE, something is wrong'
         err.path.should.be.equal process.cwd()
 
+      it 'providing name, message function, code and custom fields', ->
+        err = Whoops
+          name: 'DAMN'
+          path: process.cwd()
+          file: 'damnfile'
+          code: 'ENOCODE'
+          message: -> "something is wrong with '#{this.file}'"
+
+        isType.error(err).should.be.true()
+        err.name.should.be.equal 'DAMN'
+        err.message.should.be.equal "ENOCODE, something is wrong with 'damnfile'"
+        err.path.should.be.equal process.cwd()
 
     describe 'string', ->
       it 'providing message', ->
