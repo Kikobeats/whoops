@@ -4,14 +4,14 @@ isType = require 'is-type'
 
 describe 'Whoops ::', ->
 
-  describe 'without factory', ->
-    it 'basic', ->
-      err = Whoops()
-      isType.error(err).should.be.true()
-      err.name.should.be.equal 'Error'
-      (!!err.code).should.be.equal false
-      (!!err.description).should.be.equal false
-      (!!err.message).should.be.equal false
+  it 'basic', ->
+    err = Whoops()
+
+    isType.error(err).should.be.true()
+    err.name.should.be.equal 'Error'
+    (!!err.code).should.be.equal false
+    (!!err.description).should.be.equal false
+    (!!err.message).should.be.equal false
 
   describe 'factory', ->
 
@@ -71,19 +71,39 @@ describe 'Whoops ::', ->
     describe 'string', ->
       it 'providing message', ->
         err = Whoops 'damn'
+
         isType.error(err).should.be.true()
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
 
       it "providing mesage and name", ->
         err = Whoops 'DAMN', 'something is wrong'
+
         isType.error(err).should.be.true()
         err.name.should.be.equal 'DAMN'
         err.message.should.be.equal 'something is wrong'
 
       it "providing mesage, name and code", ->
         err = Whoops 'DAMN', 'ENOCODE', 'something is wrong'
+
         isType.error(err).should.be.true()
         err.name.should.be.equal 'DAMN'
+        err.code.should.be.equal 'ENOCODE'
+        err.message.should.be.equal 'ENOCODE, something is wrong'
+
+    describe  'class', ->
+      it 'create a custom class', ->
+        MyError = Whoops.create 'MyError'
+        err = MyError()
+
+        isType.error(err).should.be.true()
+        err.should.be.an.instanceof(Error)
+
+      it "avoid param 'name' from string factory", ->
+        MyError = Whoops.create 'MyError'
+        err = MyError('ENOCODE', 'something is wrong')
+
+        isType.error(err).should.be.true()
+        err.name.should.be.equal 'MyError'
         err.code.should.be.equal 'ENOCODE'
         err.message.should.be.equal 'ENOCODE, something is wrong'
