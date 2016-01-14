@@ -21,7 +21,7 @@ plugins:
 
     'Commiting new version':
       plugin: 'bumped-terminal'
-      command: 'npm run commit'
+      command: 'git add dist CHANGELOG.md package.json bower.json && git commit -m "$newVersion releases"'
 
     'Detecting problem before publish':
       plugin: 'bumped-terminal'
@@ -29,7 +29,7 @@ plugins:
 
     'Publishing tag at Github':
       plugin: 'bumped-terminal'
-      command: 'npm run push'
+      command: 'git tag $newVersion && git push origin $newVersion --follow-tags'
 
     'Publishing at NPM':
       plugin: 'bumped-terminal'
