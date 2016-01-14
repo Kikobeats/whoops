@@ -14,14 +14,15 @@
     "url": "https://github.com/Kikobeats/whoops/issues"
   },
   "keywords": [
-    "throw",
+    "constructor",
+    "custom",
     "error",
     "simple",
-    "custom",
-    "constructor"
+    "throw"
   ],
   "devDependencies": {
     "browserify": "latest",
+    "coffee-script": "latest",
     "coffeeify": "latest",
     "gulp": "latest",
     "gulp-header": "latest",
