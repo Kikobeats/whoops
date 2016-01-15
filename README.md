@@ -44,7 +44,7 @@ var DAMError = Whoops.create('DAMError')
 Now you can avoid the first parameter in the inline declaration:
 
 ```js
-var error = Whoops('ENOFILE', 'Something is wrong');
+var error = DAMError('ENOFILE', 'Something is wrong');
 throw error // => 'DAMNError: ENOFILE, Something is wrong'
 ```
 
