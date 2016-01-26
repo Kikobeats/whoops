@@ -65,8 +65,9 @@ var error = Whoops({
   name: 'DAMError', , ''
   code: 'ENOFILE',
   file: 'damnfile'
-  message: ->
-    "Something is wrong with the file '" + this.file "'."
+  message: function() {
+  return "Something is wrong with the file '" + this.file "'."
+  }
 });
 
 throw error // => "DAMNError: ENOFILE, Something is wrong with the file 'damnfile'"
