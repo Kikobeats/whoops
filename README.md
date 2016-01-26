@@ -66,7 +66,7 @@ var error = Whoops({
   code: 'ENOFILE',
   file: 'damnfile'
   message: function() {
-  return "Something is wrong with the file '" + this.file "'."
+    return "Something is wrong with the file '" + this.file "'."
   }
 });
 
