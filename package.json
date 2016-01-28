@@ -5,11 +5,14 @@
   "version": "1.1.0",
   "main": "./index.js",
   "author": {
-    "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/whoops",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/whoops.git"
+  },
   "bugs": {
     "url": "https://github.com/Kikobeats/whoops/issues"
   },
@@ -20,6 +23,9 @@
     "simple",
     "throw"
   ],
+  "dependencies": {
+    "capture-stack-trace": "~1.0.0"
+  },
   "devDependencies": {
     "browserify": "latest",
     "coffee-script": "latest",
@@ -45,9 +51,5 @@
     "pretest": "npm run lint",
     "test": "sh test/test.sh"
   },
-  "license": "MIT",
-  "dependencies": {
-    "capture-stack-trace": "~1.0.0",
-    "lodash.foreach": "~4.0.0"
-  }
+  "license": "MIT"
 }

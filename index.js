@@ -1,6 +1,5 @@
 'use strict'
 
-var forEach = require('lodash.foreach')
 var captureStackTrace = require('capture-stack-trace')
 
 function inherits (ctor, superCtor) {
@@ -17,8 +16,9 @@ function inherits (ctor, superCtor) {
 
 var FACTORY = {
   OBJECT: function (error, fields) {
-    forEach(fields, function (value, property) {
-      error[property] = value
+    Object.keys(fields).forEach(function (key) {
+      var value = fields[key]
+      error[key] = value
     })
 
     if (typeof error.message === 'function') error.message = error.message()
