@@ -42,14 +42,13 @@
     "vinyl-source-stream": "latest"
   },
   "engines": {
-    "node": ">= 0.10.0",
-    "npm": ">= 1.4.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
     "lint": "standard lib",
     "pretest": "npm run lint",
-    "test": "sh test/test.sh"
+    "test": "mocha"
   },
   "license": "MIT"
 }

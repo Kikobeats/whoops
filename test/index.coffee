@@ -6,15 +6,22 @@ describe 'Whoops ::', ->
 
   it 'basic', ->
     err = Whoops()
-
     isType.error(err).should.be.true()
     err.name.should.be.equal 'Error'
     (!!err.code).should.be.equal false
     (!!err.description).should.be.equal false
     (!!err.message).should.be.equal false
 
-  describe 'factory', ->
+  describe 'instanceof', ->
 
+    it 'generic', ->
+      Whoops().should.be.instanceof(Error)
+
+    xit 'typed', ->
+      DAMNError = Whoops.create('DAMNError')
+      DAMNError().should.be.instanceof(DAMNError)
+
+  describe 'factory', ->
     describe 'object', ->
       it 'providing message', ->
         err = Whoops
