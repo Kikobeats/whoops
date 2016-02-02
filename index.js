@@ -2,6 +2,8 @@
 
 var captureStackTrace = require('capture-stack-trace')
 
+function noop () {}
+
 function inherits (ctor, superCtor) {
   ctor.super_ = superCtor
   ctor.prototype = Object.create(superCtor.prototype, {
@@ -23,8 +25,6 @@ var FACTORY = {
 
     if (typeof error.message === 'function') error.message = error.message()
     if (error.code) error.message = error.code + ', ' + error.message
-
-    return error
   },
 
   STRING: function (error, args) {
@@ -33,21 +33,17 @@ var FACTORY = {
         error.name = args[0]
         error.code = args[1]
         error.message = error.code + ', ' + args[2]
-        return error.message
       },
       2: function () {
         error.name = args[0]
         error.message = args[1]
-        return error.message
       },
       1: function () {
         error.message = args[0]
-        return error.message
       },
-      0: function () {}
+      0: noop
     }
     fn[args.length]()
-    return error
   },
 
   STRING_NONAME: function (error, args) {
@@ -55,25 +51,23 @@ var FACTORY = {
       2: function () {
         error.code = args[0]
         error.message = error.code + ', ' + args[1]
-        return error.message
       },
       1: function () {
         error.message = args[0]
-        return error.message
       },
-      0: function () {}
+      0: noop
     }
 
     fn[args.length]()
-    return error
   }
 }
 
 function Factory (ErrorType, factoryString) {
   return function (type) {
     var error = new ErrorType()
-    if (typeof type === 'object') return FACTORY.OBJECT(error, type)
-    return factoryString(error, arguments)
+    if (typeof type === 'object') FACTORY.OBJECT(error, type)
+    else factoryString(error, arguments)
+    return error
   }
 }
 
