@@ -1,13 +1,25 @@
+<a name="2.0.0"></a>
+# 2.0.0 (2016-02-03)
+
+
+* Little refactor ([4fb84a1](https://github.com/kikobeats/whoops/commit/4fb84a1))
+* Refactor tests ([5fc36b1](https://github.com/kikobeats/whoops/commit/5fc36b1))
+* Setup correctly instanceof ([6436f3e](https://github.com/kikobeats/whoops/commit/6436f3e))
+* YEAH ([2c8b56b](https://github.com/kikobeats/whoops/commit/2c8b56b))
+
+
+
 <a name="1.1.1"></a>
 ## 1.1.1 (2016-01-28)
 
 
+* 1.1.1 releases ([60cb701](https://github.com/kikobeats/whoops/commit/60cb701))
 * Add standard as devDependency ([313a136](https://github.com/kikobeats/whoops/commit/313a136))
 * Remove lodash.forEach dep ([f5f96ee](https://github.com/kikobeats/whoops/commit/f5f96ee))
+* setup correctly bumped ([75d190b](https://github.com/kikobeats/whoops/commit/75d190b))
 * Update README.md ([ec8d39c](https://github.com/kikobeats/whoops/commit/ec8d39c))
 * Update README.md ([ff486b4](https://github.com/kikobeats/whoops/commit/ff486b4))
 * Update README.md ([23527e7](https://github.com/kikobeats/whoops/commit/23527e7))
-* setup correctly bumped ([75d190b](https://github.com/kikobeats/whoops/commit/75d190b))
 
 
 
@@ -19,11 +31,11 @@
 * Add .create method ([1315768](https://github.com/kikobeats/whoops/commit/1315768))
 * Add coffe as devDependency ([ce75ae9](https://github.com/kikobeats/whoops/commit/ce75ae9))
 * Add custom message function in object factory ([470414c](https://github.com/kikobeats/whoops/commit/470414c))
+* bye coffee ([6a3a1d4](https://github.com/kikobeats/whoops/commit/6a3a1d4))
+* bye config ([e920003](https://github.com/kikobeats/whoops/commit/e920003))
 * Little tests refactor ([d3abb53](https://github.com/kikobeats/whoops/commit/d3abb53))
 * Update description and documentation ([0ad3cba](https://github.com/kikobeats/whoops/commit/0ad3cba))
 * Update scripts ([29240d2](https://github.com/kikobeats/whoops/commit/29240d2))
-* bye coffee ([6a3a1d4](https://github.com/kikobeats/whoops/commit/6a3a1d4))
-* bye config ([e920003](https://github.com/kikobeats/whoops/commit/e920003))
 
 
 
@@ -62,9 +74,9 @@
 
 * 0.2.0 releases ([aff1849](https://github.com/kikobeats/whoops/commit/aff1849))
 * Added format for string constructor ([d584188](https://github.com/kikobeats/whoops/commit/d584188))
-* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * improve example ([aa2d318](https://github.com/kikobeats/whoops/commit/aa2d318))
 * little suite of tests 😁 ([5e11def](https://github.com/kikobeats/whoops/commit/5e11def))
+* Update package.json ([1120535](https://github.com/kikobeats/whoops/commit/1120535))
 * updated ([d5fc2d9](https://github.com/kikobeats/whoops/commit/d5fc2d9))
 
 
@@ -105,9 +117,9 @@
 
 
 * 0.1.0 releases ([594c110](https://github.com/kikobeats/whoops/commit/594c110))
-* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 * added documentation and more examples ([3e68abb](https://github.com/kikobeats/whoops/commit/3e68abb))
 * first approach ([c52341b](https://github.com/kikobeats/whoops/commit/c52341b))
+* Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
 
 
 
