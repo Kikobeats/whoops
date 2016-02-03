@@ -17,8 +17,10 @@ describe 'Whoops ::', ->
     it 'generic', ->
       Whoops().should.be.instanceof(Error)
 
-    xit 'typed', ->
+    it 'typed', ->
       DAMNError = Whoops.create('DAMNError')
+      DAMNError.should.be.instanceof(Error)
+      DAMNError().should.be.instanceof(Error)
       DAMNError().should.be.instanceof(DAMNError)
 
   describe 'factory', ->

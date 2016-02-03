@@ -62,13 +62,17 @@ var FACTORY = {
   }
 }
 
-function Factory (ErrorType, factoryString) {
-  return function (type) {
-    var error = new ErrorType()
+function Factory (ErrorClass, factoryString) {
+  function F (type) {
+    var error = new ErrorClass()
     if (typeof type === 'object') FACTORY.OBJECT(error, type)
     else factoryString(error, arguments)
     return error
   }
+
+  F.__proto__ = ErrorClass.prototype
+  F.prototype = ErrorClass.prototype
+  return F
 }
 
 module.exports = Factory(Error, FACTORY.STRING)
@@ -78,7 +82,6 @@ module.exports.create = function (className) {
   if (/[^0-9a-zA-Z_$]/.test(className)) throw new Error('className contains invalid characters')
 
   var ErrorClass = eval('(function ' + className + '() { captureStackTrace(this, this.constructor); })')
-
   inherits(ErrorClass, Error)
   ErrorClass.prototype.name = className
   return Factory(ErrorClass, FACTORY.STRING_NONAME)
