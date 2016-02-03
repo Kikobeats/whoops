@@ -16,6 +16,15 @@ function inherits (ctor, superCtor) {
   })
 }
 
+function setPrototypeOf (obj, proto) {
+  if (Object.setPrototypeOf) {
+    Object.setPrototypeOf(obj, proto)
+    return
+  }
+
+  obj.__proto__ = proto
+}
+
 var FACTORY = {
   OBJECT: function (error, fields) {
     Object.keys(fields).forEach(function (key) {
@@ -63,21 +72,16 @@ var FACTORY = {
 }
 
 function Factory (ErrorClass, factoryString) {
-  function F (type) {
-    var error = new ErrorClass()
-    if (typeof type === 'object') FACTORY.OBJECT(error, type)
-    else factoryString(error, arguments)
-    return error
-  }
-
-  F.__proto__ = ErrorClass.prototype
-  F.prototype = ErrorClass.prototype
-  return F
+  var className = ErrorClass.name
+  var Err = eval('(function ' + className + " (type) { var error = new ErrorClass(); if (typeof type === 'object') { FACTORY.OBJECT(error, type) } else { factoryString(error, arguments) } return error; })")
+  setPrototypeOf(Err, ErrorClass.prototype)
+  Err.prototype = ErrorClass.prototype
+  return Err
 }
 
 module.exports = Factory(Error, FACTORY.STRING)
 
-module.exports.create = function (className) {
+module.exports.create = function create (className) {
   if (typeof className !== 'string') throw new TypeError('Expected className to be a string')
   if (/[^0-9a-zA-Z_$]/.test(className)) throw new Error('className contains invalid characters')
 
