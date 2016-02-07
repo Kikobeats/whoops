@@ -1,7 +1,16 @@
+<a name="2.0.1"></a>
+## 2.0.1 (2016-02-07)
+
+
+* lock dependency ([9d36dd5](https://github.com/kikobeats/whoops/commit/9d36dd5))
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2016-02-03)
 
 
+* 2.0.0 releases ([c7ba44a](https://github.com/kikobeats/whoops/commit/c7ba44a))
 * Little refactor ([4fb84a1](https://github.com/kikobeats/whoops/commit/4fb84a1))
 * Refactor tests ([5fc36b1](https://github.com/kikobeats/whoops/commit/5fc36b1))
 * Setup correctly instanceof ([6436f3e](https://github.com/kikobeats/whoops/commit/6436f3e))
