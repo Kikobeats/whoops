@@ -37,7 +37,7 @@
     "is-type": "latest",
     "mocha": "latest",
     "should": "latest",
-    "standard": "~5.4.1",
+    "standard": "latest",
     "vinyl-buffer": "latest",
     "vinyl-source-stream": "latest"
   },
