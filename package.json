@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "capture-stack-trace": "~1.0.0",
+    "fast-apply": "0.0.3",
     "pretty-error": "~2.0.0"
   },
   "devDependencies": {
