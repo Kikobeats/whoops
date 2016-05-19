@@ -14,6 +14,7 @@
 - An easy way to create qualified errors.
 - Using the standard Error interface in browser and NodeJS.
 - Attach extra information, depending of your case of use.
+- Pretty output inspired in [Elm](https://twitter.com/GregorySchier/status/732830868562182144).
 
 Basically turns:
 
