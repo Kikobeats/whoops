@@ -1,5 +1,9 @@
 # Whoops
 
+<p align="center">
+  <img src="https://i.imgur.com/93fMUWX.png" alt="whoops">
+</p>
+
 ![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/Kikobeats/whoops/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/whoops)
 [![Dependency status](http://img.shields.io/david/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops)
