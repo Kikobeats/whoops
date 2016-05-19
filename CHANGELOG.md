@@ -1,3 +1,14 @@
+<a name="2.1.0"></a>
+# 2.1.0 (2016-05-19)
+
+* Add missing dependency ([b832bf0](https://github.com/kikobeats/whoops/commit/b832bf0))
+* Add pretty output ([a1c6e4c](https://github.com/kikobeats/whoops/commit/a1c6e4c))
+* Update docs ([1b6c6a8](https://github.com/kikobeats/whoops/commit/1b6c6a8))
+* Update README.md ([30224fe](https://github.com/kikobeats/whoops/commit/30224fe))
+* Update travis builds ([44e69b5](https://github.com/kikobeats/whoops/commit/44e69b5))
+
+
+
 <a name="2.0.1"></a>
 ## 2.0.1 (2016-02-07)
 
