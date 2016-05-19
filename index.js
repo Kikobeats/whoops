@@ -1,6 +1,18 @@
 'use strict'
 
 var captureStackTrace = require('capture-stack-trace')
+var apply = require('fast-apply')
+var PrettyError = require('pretty-error')
+var pe = new PrettyError()
+
+var isTTY = process.stdout.isTTY
+var isProduction = process.env.NODE_ENV ? process.env.NODE_ENV.toLowerCase() === 'production' : false
+var isPretty = !Boolean(process.env.PRETTY_ERROR || false)
+
+function prettify (err) {
+  if (isProduction || !isPretty || !isTTY) return err
+  return pe.render(err)
+}
 
 function noop () {}
 
@@ -79,14 +91,34 @@ function Factory (ErrorClass, factoryString) {
   return Err
 }
 
-module.exports = Factory(Error, FACTORY.STRING)
+var createError = Factory(Error, FACTORY.STRING)
 
-module.exports.create = function create (className) {
+function Whoops () {
+  return prettify(apply(createError, null, arguments))
+}
+
+Whoops.create = function create (className) {
   if (typeof className !== 'string') throw new TypeError('Expected className to be a string')
   if (/[^0-9a-zA-Z_$]/.test(className)) throw new Error('className contains invalid characters')
 
+  /** create qualified error */
   var ErrorClass = eval('(function ' + className + '() { captureStackTrace(this, this.constructor); })')
   inherits(ErrorClass, Error)
   ErrorClass.prototype.name = className
-  return Factory(ErrorClass, FACTORY.STRING_NONAME)
+
+  /** create prettify based in the qualify error */
+  function PrettifyQualifiedError (fn) {
+    function Prettify () {
+      return prettify(apply(fn, null, arguments))
+    }
+
+    setPrototypeOf(Prettify, ErrorClass.prototype)
+    Prettify.prototype = ErrorClass.prototype
+    return Prettify
+  }
+
+  var createQualifiedError = Factory(ErrorClass, FACTORY.STRING_NONAME)
+  return PrettifyQualifiedError(createQualifiedError)
 }
+
+module.exports = Whoops
