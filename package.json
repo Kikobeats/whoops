@@ -24,9 +24,7 @@
     "throw"
   ],
   "dependencies": {
-    "capture-stack-trace": "~1.0.0",
-    "fast-apply": "0.0.3",
-    "pretty-error": "~2.0.0"
+    "capture-stack-trace": "~1.0.0"
   },
   "devDependencies": {
     "browserify": "latest",
@@ -50,7 +48,7 @@
     "clean": "rm -rf node_modules",
     "lint": "standard lib",
     "pretest": "npm run lint",
-    "test": "PRETTY_ERROR=false mocha"
+    "test": "mocha"
   },
   "license": "MIT"
 }
