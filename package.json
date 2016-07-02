@@ -3,7 +3,7 @@
   "description": "It makes simple throw qualified errors.",
   "homepage": "https://github.com/Kikobeats/whoops",
   "version": "2.1.0",
-  "main": "./index.js",
+  "main": "lib/index.js",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
@@ -27,22 +27,14 @@
     "capture-stack-trace": "~1.0.0"
   },
   "devDependencies": {
-    "browserify": "latest",
     "coffee-script": "latest",
-    "coffeeify": "latest",
-    "gulp": "latest",
-    "gulp-header": "latest",
-    "gulp-uglify": "latest",
-    "gulp-util": "latest",
     "is-type": "latest",
     "mocha": "latest",
     "should": "latest",
-    "standard": "latest",
-    "vinyl-buffer": "latest",
-    "vinyl-source-stream": "latest"
+    "standard": "latest"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.10"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
