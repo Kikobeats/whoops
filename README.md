@@ -84,18 +84,6 @@ throw error // => "DAMNError: ENOFILE, Something is wrong with the file 'damnfil
 npm install whoops --save
 ```
 
-If you want to use in the browser (powered by [Browserify](http://browserify.org/)):
-
-```bash
-bower install whoops --save
-```
-
-and later link in your HTML:
-
-```html
-<script src="bower_components/whoops/dist/whoops.js"></script>
-```
-
 ## API
 
 ### .constructor([String|Object])
