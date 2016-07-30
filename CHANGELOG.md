@@ -1,3 +1,17 @@
+<a name="3.0.0"></a>
+# 3.0.0 (2016-07-30)
+
+* Add clean-stack dep ([7f32385](https://github.com/kikobeats/whoops/commit/7f32385))
+* Drop < 4 node support ([185ae66](https://github.com/kikobeats/whoops/commit/185ae66))
+* Fix dep ([a87c1ea](https://github.com/kikobeats/whoops/commit/a87c1ea))
+* Refactor fn template ([942a189](https://github.com/kikobeats/whoops/commit/942a189))
+* Remove capture-stack-trace dep ([5fdae23](https://github.com/kikobeats/whoops/commit/5fdae23))
+* Remove string interface with 3 params ([5439d61](https://github.com/kikobeats/whoops/commit/5439d61))
+* Remove unnecessary dep ([78d6dac](https://github.com/kikobeats/whoops/commit/78d6dac))
+* Update docs ([34f5e8c](https://github.com/kikobeats/whoops/commit/34f5e8c))
+
+
+
 <a name="2.2.0"></a>
 # 2.2.0 (2016-07-30)
 
