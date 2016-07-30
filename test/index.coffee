@@ -1,6 +1,5 @@
 Whoops = require '..'
 should = require 'should'
-isType = require 'is-type'
 
 describe 'Whoops ::', ->
 
