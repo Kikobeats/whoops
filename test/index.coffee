@@ -85,20 +85,12 @@ describe 'Whoops ::', ->
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
 
-      it "providing mesage and name", ->
+      it "providing mesage and code", ->
         err = Whoops 'DAMN', 'something is wrong'
 
         isType.error(err).should.be.true()
-        err.name.should.be.equal 'DAMN'
-        err.message.should.be.equal 'something is wrong'
-
-      it "providing mesage, name and code", ->
-        err = Whoops 'DAMN', 'ENOCODE', 'something is wrong'
-
-        isType.error(err).should.be.true()
-        err.name.should.be.equal 'DAMN'
-        err.code.should.be.equal 'ENOCODE'
-        err.message.should.be.equal 'ENOCODE, something is wrong'
+        err.code.should.be.equal 'DAMN'
+        err.message.should.be.equal 'DAMN, something is wrong'
 
     describe  'class', ->
       it 'create a custom class', ->
