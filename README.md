@@ -1,4 +1,4 @@
-# Whoops
+# whoops
 
 <p align="center">
   <img src="https://i.imgur.com/93fMUWX.png" alt="whoops">
@@ -17,72 +17,124 @@
 ## Why
 
 - An easy way to create qualified errors.
-- Using the standard Error interface in browser and NodeJS.
+- Using the standard `Error` interface in browser and NodeJS.
 - Attach extra information, depending of your case of use.
-- Pretty output inspired in [Elm](https://twitter.com/GregorySchier/status/732830868562182144).
 
-Basically turns:
-
-```js
-var error = Error('ENOFILE, Something is wrong')
-error.name = 'DAMNError'
-error.code = 'ENOFILE'
-
-throw error // => 'DAMNError: ENOFILE, Something is wrong'
-```
-
-into one line error declaration:
-
-```js
-var Whoops = require('Whoops');
-var error = Whoops('DAMError', 'ENOFILE', 'Something is wrong');
-
-throw error // => 'DAMNError: ENOFILE, Something is wrong'
-```
-
-Also you can create custom class errors for avoid write the name of the error
-all the time:
-
-```js
-var DAMError = Whoops.create('DAMError')
-```
-
-Now you can avoid the first parameter in the inline declaration:
-
-```js
-var error = DAMError('ENOFILE', 'Something is wrong');
-throw error // => 'DAMNError: ENOFILE, Something is wrong'
-```
-
-Constructor also can be executed in object mode for the cases where you need to
-setup more properties associated with the error:
-
-```js
-var error = Whoops({
-  name: 'DAMError', , ''
-  code: 'ENOFILE'
-  message: 'Something is wrong'
-  path: 'filepath'
-});
-
-In this mode you can pass a generator function as message:
-
-var error = Whoops({
-  name: 'DAMError', , ''
-  code: 'ENOFILE',
-  file: 'damnfile'
-  message: function() {
-    return "Something is wrong with the file '" + this.file "'."
-  }
-});
-
-throw error // => "DAMNError: ENOFILE, Something is wrong with the file 'damnfile'"
-```
+This library is a compromise to provide a clean API for use `Error` native class.
 
 ## Install
 
 ```bash
 npm install whoops --save
+```
+
+Basically it turns:
+
+```js
+var error = Error('Something is wrong')
+error.name = 'DAMNError'
+throw error
+// => 'DAMNError: ENOFILE, Something is wrong'
+```
+
+Into a one line more productive declaration:
+
+```js
+var whoops = require('whoops');
+var error = whoops('DAMError', 'Something is wrong');
+throw error
+// => 'DAMNError: Something is wrong'
+```
+
+## Creating an Error
+
+This interface follow the one line principle. All the things that you can declare in this mode are:
+
+#### message
+
+Always that you want to create an `Error` need to provide a message for description.
+
+```js
+var userError = whoops('username already taken');
+throw userError
+// => 'Error: username already taken'
+```
+
+In the `Error` object you have:
+
+```js
+{
+  name: 'Error',
+  message: 'username already taken'
+}
+```
+
+#### code
+
+When you need to handle different errors, you need to distinguish the `Error`. For this purpose, you need yo associated a identifier that recognize each `Error`.
+
+```js
+var userError = whoops('ENAME', 'username already taken');
+throw userError
+// => 'Error: ENAME, username already taken'
+```
+
+In the error object you have:
+
+```js
+{
+  name: 'Error',
+  code: 'ENAME'
+  message: 'username already taken'
+}
+```
+
+## Creating qualified Errors
+
+If you need to create a set of qualified errors associate with an `Error` name, you can create a specific error factory for this purpose.
+
+```js
+var USRError = whoops.create('USRError')
+throw USRError('ENAME', 'username already taken')
+// => 'USRError: ENAME, username already taken'
+```
+
+Notes how now `USRError` is an instance of `Error`.
+
+## Attaching more information
+
+Because `Error` is an `object`, you can attach more information.
+
+For do that, you can feel more comfortable using the object interface:
+
+```js
+var error = USRError({
+  code: 'ENAME',
+  username: '@kikobeats',
+  message: function() {
+    return "username '" + this.username "' already taken"
+  }
+});
+
+throw error
+// => 'USRError: ENAME, username '@kikobeats' already taken'
+```
+
+Each property that you provide in this mode, will be attached to the final `Error`.
+
+Also as you can see you can setup the message of the error dynamically.
+
+This mode could be used without using qualified errors as well:
+
+```js
+var error = whoops({
+  name: 'USRError',
+  code: 'ENAME',
+  username: '@kikobeats',
+  message: function() {
+    return "username '" + this.username "' already taken"
+  }
+});
 ```
 
 ## API
@@ -93,7 +145,7 @@ Create a new `Error`. You can use it using two different interfaces.
 
 #### String Constructor
 
-Following the schema `.constructor([name], [code], {message})`
+Following the schema `.constructor([code], {message})`
 
 #### Object Constructor
 
@@ -122,7 +174,7 @@ About asynchronous code, is correct return a `Object` that is not a `Error` in t
 ```js
 callback('LOL something was wrong') // poor
 callback({message: 'LOL something was wrong' } // poor, but better
-callback(Whoops('LOL, something was wrong') // BEST!
+callback(whoops('LOL, something was wrong') // BEST!
 ```
 
 Passing always an `Error` you can can associated different type of error with different behavior:
