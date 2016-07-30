@@ -1,3 +1,13 @@
+<a name="2.2.0"></a>
+# 2.2.0 (2016-07-30)
+
+* Add coverage ([1547649](https://github.com/kikobeats/whoops/commit/1547649))
+* Move pretty on different pkg ([3640943](https://github.com/kikobeats/whoops/commit/3640943))
+* Refactor scaffold ([5907391](https://github.com/kikobeats/whoops/commit/5907391))
+* Remove browser build ([e0e3621](https://github.com/kikobeats/whoops/commit/e0e3621))
+
+
+
 <a name="2.1.0"></a>
 # 2.1.0 (2016-05-19)
 
