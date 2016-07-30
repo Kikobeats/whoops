@@ -29,7 +29,6 @@
   "devDependencies": {
     "coffee-script": "latest",
     "coveralls": "latest",
-    "is-type": "latest",
     "mocha": "latest",
     "nyc": "latest",
     "should": "latest",
