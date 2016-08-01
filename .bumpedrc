@@ -24,7 +24,7 @@ plugins:
 
     'Publishing tag at GitHub':
       plugin: 'bumped-terminal'
-      command: 'git tag $newVersion && git push origin $newVersion --follow-tags'
+      command: 'git tag $newVersion && git push && git push --tags'
 
     'Publishing at NPM':
       plugin: 'bumped-terminal'
