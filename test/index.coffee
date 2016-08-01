@@ -18,7 +18,6 @@ describe 'Whoops ::', ->
 
     it 'typed', ->
       DAMNError = Whoops.create('DAMNError')
-      DAMNError.should.be.instanceof(Error)
       DAMNError().should.be.instanceof(Error)
       DAMNError().should.be.instanceof(DAMNError)
 
