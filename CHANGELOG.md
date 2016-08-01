@@ -1,3 +1,14 @@
+<a name="3.0.1"></a>
+## 3.0.1 (2016-08-01)
+
+* Avoid eval for setup function name ([1ecde20](https://github.com/kikobeats/whoops/commit/1ecde20))
+* Remove interface string façade ([14c5932](https://github.com/kikobeats/whoops/commit/14c5932))
+* Remove unncessary check ([6a4d469](https://github.com/kikobeats/whoops/commit/6a4d469))
+* Rename extend-error → create-extend-error ([fd3726e](https://github.com/kikobeats/whoops/commit/fd3726e))
+* Setup Error name in constructor ([4ac076d](https://github.com/kikobeats/whoops/commit/4ac076d))
+
+
+
 <a name="3.0.0"></a>
 # 3.0.0 (2016-07-30)
 
