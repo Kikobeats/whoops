@@ -1,3 +1,11 @@
+<a name="3.0.2"></a>
+## 3.0.2 (2016-09-13)
+
+* chore(package): update clean-stack to version 1.0.0 ([ff0f4ce](https://github.com/kikobeats/whoops/commit/ff0f4ce))
+* Update ([ce66183](https://github.com/kikobeats/whoops/commit/ce66183))
+
+
+
 <a name="3.0.1"></a>
 ## 3.0.1 (2016-08-01)
 
