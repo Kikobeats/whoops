@@ -7,9 +7,9 @@ describe 'Whoops ::', ->
     err = Whoops()
     err.should.be.an.Error()
     err.name.should.be.equal 'Error'
-    (!!err.code).should.be.equal false
-    (!!err.description).should.be.equal false
-    (!!err.message).should.be.equal false
+    (!!err.code).should.be.false()
+    (!!err.description).should.be.false()
+    (!!err.message).should.be.false()
 
   describe 'instanceof', ->
 
@@ -76,14 +76,14 @@ describe 'Whoops ::', ->
         err.path.should.be.equal process.cwd()
 
     describe 'string', ->
-      it 'providing message', ->
+      it 'one arguments → message', ->
         err = Whoops 'damn'
 
         err.should.be.an.Error()
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
 
-      it "providing mesage and code", ->
+      it "two arguments → code and message", ->
         err = Whoops 'DAMN', 'something is wrong'
 
         err.should.be.an.Error()
