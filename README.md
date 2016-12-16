@@ -31,19 +31,17 @@ npm install whoops --save
 Basically it turns:
 
 ```js
-var error = Error('Something is wrong')
+const error = Error('Something is wrong')
 error.name = 'DAMNError'
-throw error
-// => 'DAMNError: ENOFILE, Something is wrong'
+throw error // => 'DAMNError: ENOFILE, Something is wrong'
 ```
 
 Into a one line more productive declaration:
 
 ```js
-var whoops = require('whoops');
-var error = whoops('DAMError', 'Something is wrong');
-throw error
-// => 'DAMNError: Something is wrong'
+const whoops = require('whoops')
+const error = whoops('DAMError', 'Something is wrong')
+throw error // => 'DAMNError: Something is wrong'
 ```
 
 ## Creating an Error
@@ -55,7 +53,9 @@ This interface follow the one line principle. All the things that you can declar
 Always that you want to create an `Error` need to provide a message for description.
 
 ```js
-var userError = whoops('username already taken');
+const whoops = require('whoops')
+const userError = whoops('username already taken')
+
 throw userError
 // => 'Error: username already taken'
 ```
@@ -74,7 +74,9 @@ In the `Error` object you have:
 When you need to handle different errors, you need to distinguish the `Error`. For this purpose, you need yo associated a identifier that recognize each `Error`.
 
 ```js
-var userError = whoops('ENAME', 'username already taken');
+const whoops = require('whoops')
+const userError = whoops('ENAME', 'username already taken')
+
 throw userError
 // => 'Error: ENAME, username already taken'
 ```
@@ -84,7 +86,7 @@ In the error object you have:
 ```js
 {
   name: 'Error',
-  code: 'ENAME'
+  code: 'ENAME',
   message: 'username already taken'
 }
 ```
@@ -94,7 +96,9 @@ In the error object you have:
 If you need to create a set of qualified errors associate with an `Error` name, you can create a specific error factory for this purpose.
 
 ```js
-var USRError = whoops.create('USRError')
+const whoops = require('whoops')
+const USRError = whoops.create('USRError')
+
 throw USRError('ENAME', 'username already taken')
 // => 'USRError: ENAME, username already taken'
 ```
@@ -108,13 +112,14 @@ Because `Error` is an `object`, you can attach more information.
 For do that, you can feel more comfortable using the object interface:
 
 ```js
-var error = USRError({
+const whoops = require('whoops')
+const USRError = whoops.create('USRError')
+
+const error = USRError({
   code: 'ENAME',
   username: '@kikobeats',
-  message: function() {
-    return "username '" + this.username "' already taken"
-  }
-});
+  message: () => `username '${this.username}' already taken`
+})
 
 throw error
 // => 'USRError: ENAME, username '@kikobeats' already taken'
@@ -127,14 +132,17 @@ Also as you can see you can setup the message of the error dynamically.
 This mode could be used without using qualified errors as well:
 
 ```js
-var error = whoops({
+const whoops = require('whoops')
+
+const error = whoops({
   name: 'USRError',
   code: 'ENAME',
   username: '@kikobeats',
-  message: function() {
-    return "username '" + this.username "' already taken"
-  }
-});
+  message: () => `username '${this.username}' already taken`
+})
+
+throw error
+// => 'USRError: ENAME, username '@kikobeats' already taken'
 ```
 
 ## API
@@ -179,14 +187,14 @@ callback(whoops('LOL, something was wrong') // BEST!
 
 Passing always an `Error` you can can associated different type of error with different behavior:
 
-```js
+```
 switch (err.name) {
   case 'JSONError':
-    console.log('your error logic here');
-    break;
+    console.log('your error logic here')
+    break
   default:
-    console.log('undefined code');
-    break;
+    console.log('undefined code')
+    break
 };
 ```
 
