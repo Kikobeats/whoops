@@ -1,3 +1,11 @@
+<a name="3.1.0"></a>
+# 3.1.0 (2016-12-19)
+
+* Add description field ([6b3b308](https://github.com/kikobeats/whoops/commit/6b3b308))
+* Drop node 5 from testing ([c223c7f](https://github.com/kikobeats/whoops/commit/c223c7f))
+
+
+
 <a name="3.0.3"></a>
 ## 3.0.3 (2016-12-19)
 
