@@ -30,6 +30,7 @@ describe 'Whoops ::', ->
         err.should.be.an.Error()
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
+        err.description.should.be.equal 'damn'
 
       it 'providing name and message', ->
         err = Whoops
@@ -39,6 +40,7 @@ describe 'Whoops ::', ->
         err.should.be.an.Error()
         err.name.should.be.equal 'DAMN'
         err.message.should.be.equal 'something is wrong'
+        err.description.should.be.equal 'something is wrong'
 
       it 'providing name, message and code', ->
         err = Whoops
@@ -48,6 +50,8 @@ describe 'Whoops ::', ->
 
         err.should.be.an.Error()
         err.name.should.be.equal 'DAMN'
+        err.code.should.be.equal 'ENOCODE'
+        err.description.should.be.equal 'something is wrong'
         err.message.should.be.equal 'ENOCODE, something is wrong'
 
       it 'providing name, message, code and custom fields',  ->
@@ -59,6 +63,8 @@ describe 'Whoops ::', ->
 
         err.should.be.an.Error()
         err.name.should.be.equal 'DAMN'
+        err.code.should.be.equal 'ENOCODE'
+        err.description.should.be.equal 'something is wrong'
         err.message.should.be.equal 'ENOCODE, something is wrong'
         err.path.should.be.equal process.cwd()
 
@@ -72,6 +78,8 @@ describe 'Whoops ::', ->
 
         err.should.be.an.Error()
         err.name.should.be.equal 'DAMN'
+        err.code.should.be.equal 'ENOCODE'
+        err.description.should.be.equal "something is wrong with 'damnfile'"
         err.message.should.be.equal "ENOCODE, something is wrong with 'damnfile'"
         err.path.should.be.equal process.cwd()
 
@@ -82,12 +90,14 @@ describe 'Whoops ::', ->
         err.should.be.an.Error()
         err.name.should.be.equal 'Error'
         err.message.should.be.equal 'damn'
+        err.description.should.be.equal 'damn'
 
       it "two arguments → code and message", ->
         err = Whoops 'DAMN', 'something is wrong'
 
         err.should.be.an.Error()
         err.code.should.be.equal 'DAMN'
+        err.description.should.be.equal 'something is wrong'
         err.message.should.be.equal 'DAMN, something is wrong'
 
     describe  'class', ->
@@ -105,4 +115,5 @@ describe 'Whoops ::', ->
         err.should.be.an.Error()
         err.name.should.be.equal 'MyError'
         err.code.should.be.equal 'ENOCODE'
+        err.description.should.be.equal 'something is wrong'
         err.message.should.be.equal 'ENOCODE, something is wrong'
