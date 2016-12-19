@@ -1,3 +1,15 @@
+<a name="3.0.3"></a>
+## 3.0.3 (2016-12-19)
+
+* 80 → 100 lines ([a117bb8](https://github.com/kikobeats/whoops/commit/a117bb8))
+* Avoid inline regexp declaration ([2f91173](https://github.com/kikobeats/whoops/commit/2f91173))
+* Better docs ([591d743](https://github.com/kikobeats/whoops/commit/591d743))
+* Test refactor ([58fb3dc](https://github.com/kikobeats/whoops/commit/58fb3dc))
+* Update deps ([c0d5a49](https://github.com/kikobeats/whoops/commit/c0d5a49))
+* Update README.md ([c9c32f8](https://github.com/kikobeats/whoops/commit/c9c32f8))
+
+
+
 <a name="3.0.2"></a>
 ## 3.0.2 (2016-09-13)
 
