@@ -1,3 +1,13 @@
+<a name="3.1.1"></a>
+## 3.1.1 (2017-07-18)
+
+* Update README.md ([4561a8b](https://github.com/kikobeats/whoops/commit/4561a8b))
+* docs(readme): add Greenkeeper badge ([9b93e2c](https://github.com/kikobeats/whoops/commit/9b93e2c))
+* chore(package): update clean-stack to version 1.2.0 ([b2cb039](https://github.com/kikobeats/whoops/commit/b2cb039))
+* chore(package): update clean-stack to version 1.3.0 ([12fb684](https://github.com/kikobeats/whoops/commit/12fb684))
+
+
+
 <a name="3.1.0"></a>
 # 3.1.0 (2016-12-19)
 
