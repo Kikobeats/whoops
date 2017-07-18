@@ -1,7 +1,5 @@
 # whoops
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Kikobeats/whoops.svg)](https://greenkeeper.io/)
-
 <p align="center">
   <img src="https://i.imgur.com/93fMUWX.png" alt="whoops">
 </p>
