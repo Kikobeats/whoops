@@ -187,7 +187,7 @@ callback(whoops('LOL, something was wrong') // BEST!
 
 Passing always an `Error` you can can associated different type of error with different behavior:
 
-```
+```js
 switch (err.name) {
   case 'JSONError':
     console.log('your error logic here')
