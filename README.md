@@ -198,10 +198,6 @@ switch (err.name) {
 };
 ```
 
-## Related
-
-* [fault](https://github.com/wooorm/fault) – Functional errors with formatted output.
-
 ## License
 
 MIT © [Kiko Beats](http://www.kikobeats.com)
