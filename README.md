@@ -12,7 +12,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> It makes simple throw qualified errors. Inspired in [errno](https://github.com/rvagg/node-errno) and [create-error-class](https://github.com/floatdrop/create-error-class).
+> It makes simple throw qualified errors. Inspired in [errno](https://github.com/rvagg/node-errno), [create-error-class](https://github.com/floatdrop/create-error-class) and [fault](https://github.com/wooorm/fault).
 
 ## Why
 
