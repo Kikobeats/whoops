@@ -41,7 +41,7 @@ const userError = whoops('UserError')
 throw userError('User not found') // => 'UserError: User not found'
 ```
 
-## Creating a Qualified Errors
+## Creating Qualified Errors
 
 Call `whoops` to get a constructor function. Every time you call the constructor, you get an `Error` instance:
 
