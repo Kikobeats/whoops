@@ -38,6 +38,20 @@ describe('whoops', function () {
         }
       })
     })
+
+    it('attach props', function () {
+      const userError = whoops('UserError', {code: 'ENOVALID'})
+      should(userError).be.a.Function()
+      should(userError.name).be.equal(Error.name)
+
+      try {
+        throw userError({message: 'user not found'})
+      } catch (err) {
+        should(err.message).be.equal('ENOVALID, user not found')
+        should(err.code).be.equal('ENOVALID')
+        should(err.description).be.equal('user not found')
+      }
+    })
   })
 
   describe('instance', function () {
