@@ -5,7 +5,7 @@ describe('whoops', function () {
   describe('constructor', function () {
     describe('Error', function () {
       it('without providing a class name', function () {
-        const userError = whoops('UserError')
+        const userError = whoops()
         should(userError).be.a.Function()
         should(userError.name).be.equal(Error.name)
       })
@@ -18,16 +18,16 @@ describe('whoops', function () {
     })
 
     ;[
-      ['TypeError', whoops.type],
-      ['RangeError', whoops.range],
-      ['EvalError', whoops.eval],
-      ['SyntaxError', whoops.syntax],
-      ['ReferenceError', whoops.reference],
-      ['URIError', whoops.uri]
+      [TypeError, whoops.type],
+      [RangeError, whoops.range],
+      [EvalError, whoops.eval],
+      [SyntaxError, whoops.syntax],
+      [ReferenceError, whoops.reference],
+      [URIError, whoops.uri]
     ].forEach(function (test) {
       const [errorName, fn] = test
 
-      it(errorName, function () {
+      it(errorName.name, function () {
         const userError = fn('UserError')
         should(userError).be.a.Function()
         should(userError.name).be.equal(Error.name)
@@ -61,6 +61,9 @@ describe('whoops', function () {
         try {
           throw userError('user not found')
         } catch (err) {
+          should(err).instanceof(userError)
+          should(err).instanceof(Error)
+
           should(err.message).be.equal('user not found')
           should(err.description).be.equal('user not found')
         }
@@ -71,6 +74,9 @@ describe('whoops', function () {
         try {
           throw userError({message: 'user not found'})
         } catch (err) {
+          should(err).instanceof(userError)
+          should(err).instanceof(Error)
+
           should(err.message).be.equal('user not found')
           should(err.description).be.equal('user not found')
         }
@@ -82,6 +88,9 @@ describe('whoops', function () {
       try {
         throw userError({message: 'user not found', code: 'ENOVALID'})
       } catch (err) {
+        should(err).instanceof(userError)
+        should(err).instanceof(Error)
+
         should(err.message).be.equal('ENOVALID, user not found')
         should(err.code).be.equal('ENOVALID')
         should(err.description).be.equal('user not found')
@@ -97,6 +106,9 @@ describe('whoops', function () {
           code: 'ENOVALID'
         })
       } catch (err) {
+        should(err).instanceof(userError)
+        should(err).instanceof(Error)
+
         should(err.message).be.equal('ENOVALID, user \'kikobeats\' not found')
         should(err.code).be.equal('ENOVALID')
         should(err.description).be.equal('user \'kikobeats\' not found')

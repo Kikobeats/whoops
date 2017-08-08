@@ -1,9 +1,5 @@
 # whoops
 
-<p align="center">
-  <img src="https://i.imgur.com/93fMUWX.png" alt="whoops">
-</p>
-
 ![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/Kikobeats/whoops/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/whoops)
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/whoops.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/whoops)
@@ -40,135 +36,67 @@ Into a one line more productive declaration:
 
 ```js
 const whoops = require('whoops')
-const error = whoops('DAMError', 'Something is wrong')
-throw error // => 'DAMNError: Something is wrong'
+const userError = whoops('UserError')
+
+throw userError('User not found') // => 'UserError: User not found'
 ```
 
-## Creating an Error
+## Creating a Qualified Errors
 
-This interface follow the one line principle. All the things that you can declare in this mode are:
-
-#### message
-
-Always that you want to create an `Error` need to provide a message for description.
+Call `whoops` to get a constructor function. Every time you call the constructor, you get an `Error` instance:
 
 ```js
 const whoops = require('whoops')
-const userError = whoops('username already taken')
+const myError = whoops()
 
-throw userError
-// => 'Error: username already taken'
+throw myError()
 ```
 
-In the `Error` object you have:
-
-```js
-{
-  name: 'Error',
-  message: 'username already taken'
-}
-```
-
-#### code
-
-When you need to handle different errors, you need to distinguish the `Error`. For this purpose, you need yo associated a identifier that recognize each `Error`.
+If you provided a `className` you get a qualified constructor function that extends from `Error`:
 
 ```js
 const whoops = require('whoops')
-const userError = whoops('ENAME', 'username already taken')
+const userError = whoops('userError')
 
-throw userError
-// => 'Error: ENAME, username already taken'
+throw userError()
 ```
 
-In the error object you have:
-
-```js
-{
-  name: 'Error',
-  code: 'ENAME',
-  message: 'username already taken'
-}
-```
-
-## Creating qualified Errors
-
-If you need to create a set of qualified errors associate with an `Error` name, you can create a specific error factory for this purpose.
+Providing `props` as second parameter you can attach extra information that always will be associated with the `error`:
 
 ```js
 const whoops = require('whoops')
-const USRError = whoops.create('USRError')
+const userError = whoops('userError', {code: 'ENOVALID'})
 
-throw USRError('ENAME', 'username already taken')
-// => 'USRError: ENAME, username already taken'
+const err = userError()
+console.log(`My error code is ${err.code}`) // => My error code is ENOVALID
 ```
 
-Notes how now `USRError` is an instance of `Error`.
-
-## Attaching more information
-
-Because `Error` is an `object`, you can attach more information.
-
-For do that, you can feel more comfortable using the object interface:
+Also, you can associate dynamic `props` at the moment of the `error`:
 
 ```js
 const whoops = require('whoops')
-const USRError = whoops.create('USRError')
-
-const error = USRError({
-  code: 'ENAME',
-  username: '@kikobeats',
-  message: () => `username '${this.username}' already taken`
+const userError = whoops('userError', {
+  code: 'ENOVALID',
+  message: props => `User '${props.username}' not found`
 })
 
-throw error
-// => 'USRError: ENAME, username '@kikobeats' already taken'
+const err = userError({username: 'kiko'})
+console.log(err.message) // => User 'kiko' not found
 ```
 
-Each property that you provide in this mode, will be attached to the final `Error`.
+## Error Types
 
-Also as you can see you can setup the message of the error dynamically.
+By default you will get `Error` instances calling whoops, but you can get different errors calling the properly method:
 
-This mode could be used without using qualified errors as well:
-
-```js
-const whoops = require('whoops')
-
-const error = whoops({
-  name: 'USRError',
-  code: 'ENAME',
-  username: '@kikobeats',
-  message: () => `username '${this.username}' already taken`
-})
-
-throw error
-// => 'USRError: ENAME, username '@kikobeats' already taken'
-```
-
-## API
-
-### .constructor([String|Object])
-
-Create a new `Error`. You can use it using two different interfaces.
-
-#### String Constructor
-
-Following the schema `.constructor([code], {message})`
-
-#### Object Constructor
-
-Whatever property that you pass in an object will be associated with the `Error`.
-
-If you pass a function as `message` property will be executed in the context
-of the `Error`.
-
-For both constructor modes, if the `code` of the error is provided will be
-concatenated and the begin of the `message`.
-
-### .create({String})
-
-Create a new qualified `Error`. All is the same than the normal constructor,
-but in this case you don't have to provide the `name` of the error.
+| Name           | Method           |
+|----------------|------------------|
+| [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)          | whoops           |
+| [TypeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError)      | whoops.type      |
+| [RangeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError)     | whoops.range     |
+| [EvalError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError)      | whoops.eval      |
+| [SyntaxError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError)    | whoops.syntax    |
+| [ReferenceError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError) | whoops.reference |
+| [URIError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError)       | whoops.uri       |
 
 ## Extra: Always throw/return an Error!
 
