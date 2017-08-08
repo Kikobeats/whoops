@@ -1,3 +1,17 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2017-08-08)
+
+* refactor ([ca6e60e](https://github.com/kikobeats/whoops/commit/ca6e60e))
+* Remove unnecessasry ([6ec4220](https://github.com/kikobeats/whoops/commit/6ec4220))
+* Support attach props into constructor ([8dd67b9](https://github.com/kikobeats/whoops/commit/8dd67b9))
+* Update builds ([6e6275c](https://github.com/kikobeats/whoops/commit/6e6275c))
+* Update docs ([515c498](https://github.com/kikobeats/whoops/commit/515c498))
+* Update README.md ([a0dc9b0](https://github.com/kikobeats/whoops/commit/a0dc9b0))
+* Update README.md ([b289826](https://github.com/kikobeats/whoops/commit/b289826))
+* Update README.md ([bf87a1f](https://github.com/kikobeats/whoops/commit/bf87a1f))
+
+
+
 <a name="3.1.1"></a>
 ## 3.1.1 (2017-07-18)
 
