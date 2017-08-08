@@ -1,3 +1,11 @@
+<a name="4.0.1"></a>
+## 4.0.1 (2017-08-08)
+
+* Reducing library size ([ce26a2d](https://github.com/kikobeats/whoops/commit/ce26a2d))
+* Update README.md ([2e71ec2](https://github.com/kikobeats/whoops/commit/2e71ec2))
+
+
+
 <a name="4.0.0"></a>
 # 4.0.0 (2017-08-08)
 
