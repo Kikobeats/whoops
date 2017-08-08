@@ -35,7 +35,7 @@
     "standard": "latest"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">= 8"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
