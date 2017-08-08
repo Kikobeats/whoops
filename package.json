@@ -37,6 +37,9 @@
   "engines": {
     "node": ">= 8"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
