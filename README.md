@@ -14,7 +14,7 @@
 
 - An easy way to create qualified errors.
 - Using the standard `Error` interface in browser and NodeJS.
-- Attach extra information, depending of your case of use.
+- Attach extra information, being flexible with whatever user case.
 
 This library is a compromise to provide a clean API for use `Error` native class.
 
@@ -48,30 +48,36 @@ Call `whoops` to get a constructor function. Every time you call the constructor
 ```js
 const whoops = require('whoops')
 const myError = whoops()
-
 throw myError()
 ```
 
-If you provided a `className` you get a qualified constructor function that extends from `Error`:
+Create domain specific errors providing a `className` as first argument:
 
 ```js
 const whoops = require('whoops')
 const userError = whoops('userError')
-
 throw userError()
 ```
 
-Providing `props` as second parameter you can attach extra information that always will be associated with the `error`:
+The qualified error will be extends from `Error`:
+
+```js
+const whoops = require('whoops')
+const userError = whoops('userError')
+const error = userError()
+console.log(error instanceof Error); // => true
+```
+
+Attach extra information passing a `props` as second argument:
 
 ```js
 const whoops = require('whoops')
 const userError = whoops('userError', {code: 'ENOVALID'})
-
 const err = userError()
 console.log(`My error code is ${err.code}`) // => My error code is ENOVALID
 ```
 
-Also, you can associate dynamic `props` at the moment of the `error`:
+You can associate dynamic `props` as well:
 
 ```js
 const whoops = require('whoops')
