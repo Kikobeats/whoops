@@ -1,3 +1,17 @@
+<a name="4.0.2"></a>
+## 4.0.2 (2019-03-08)
+
+* fix(package): update clean-stack to version 2.0.0 ([24952ae](https://github.com/kikobeats/whoops/commit/24952ae))
+* fix(package): update mimic-fn to version 1.2.0 ([719fc26](https://github.com/kikobeats/whoops/commit/719fc26))
+* fix(package): update mimic-fn to version 2.0.0 ([d5c78a1](https://github.com/kikobeats/whoops/commit/d5c78a1))
+* Refactor ([64f751b](https://github.com/kikobeats/whoops/commit/64f751b))
+* Update compositor.json ([e26b0fd](https://github.com/kikobeats/whoops/commit/e26b0fd))
+* Update compositor.json ([da98ea7](https://github.com/kikobeats/whoops/commit/da98ea7))
+* Update README.md ([0228c84](https://github.com/kikobeats/whoops/commit/0228c84))
+* docs(readme): add Greenkeeper badge ([4e1a125](https://github.com/kikobeats/whoops/commit/4e1a125))
+
+
+
 <a name="4.0.1"></a>
 ## 4.0.1 (2017-08-08)
 
