@@ -1,3 +1,12 @@
+## 4.1.0 (2019-12-15)
+
+* build: update dependencies ([af7e392](https://github.com/kikobeats/whoops/commit/af7e392))
+* fix(package): update clean-stack to version 2.1.0 ([3275e3c](https://github.com/kikobeats/whoops/commit/3275e3c))
+* fix(package): update mimic-fn to version 2.1.0 ([db95daa](https://github.com/kikobeats/whoops/commit/db95daa))
+* fix(package): update mimic-fn to version 3.0.0 ([e1cc912](https://github.com/kikobeats/whoops/commit/e1cc912))
+
+
+
 <a name="4.0.2"></a>
 ## 4.0.2 (2019-03-08)
 
