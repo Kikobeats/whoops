@@ -24,7 +24,7 @@
     "throw"
   ],
   "dependencies": {
-    "clean-stack": "~2.1.0",
+    "clean-stack": "~2.2.0",
     "mimic-fn": "~3.0.0"
   },
   "devDependencies": {
