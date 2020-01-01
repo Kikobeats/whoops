@@ -132,6 +132,12 @@ switch (err.name) {
 };
 ```
 
+## Related
+
+- [create-error-class](https://github.com/floatdrop/create-error-class) – Create error class.
+- [fault](https://github.com/wooorm/fault) – Functional errors with formatted output.
+
+
 ## License
 
 MIT © [Kiko Beats](http://www.kikobeats.com)
