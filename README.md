@@ -1,12 +1,8 @@
 # whoops
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/whoops/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/whoops)
 [![Coverage Status](https://img.shields.io/coveralls/Kikobeats/whoops.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/whoops)
-[![Dependency status](http://img.shields.io/david/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/whoops.svg?style=flat-square)](https://david-dm.org/Kikobeats/whoops#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > It makes simple throw qualified errors. Inspired in [errno](https://github.com/rvagg/node-errno), [create-error-class](https://github.com/floatdrop/create-error-class) and [fault](https://github.com/wooorm/fault).
 
