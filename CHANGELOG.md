@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### 4.1.1 (2022-05-27)
+
+
+### Bug Fixes
+
+* add nano-staged config ([f741480](https://github.com/kikobeats/whoops/commit/f741480cd7fb486651fbe01b911289149f10b030))
+
 ## 4.1.0 (2019-12-15)
 
 * build: update dependencies ([af7e392](https://github.com/kikobeats/whoops/commit/af7e392))
@@ -258,6 +269,3 @@
 * added documentation and more examples ([3e68abb](https://github.com/kikobeats/whoops/commit/3e68abb))
 * first approach ([c52341b](https://github.com/kikobeats/whoops/commit/c52341b))
 * Update README.md ([e7172ab](https://github.com/kikobeats/whoops/commit/e7172ab))
-
-
-
