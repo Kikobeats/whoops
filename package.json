@@ -28,11 +28,22 @@
     "mimic-fn": "~3.1.0"
   },
   "devDependencies": {
-    "coveralls": "latest",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "c8": "latest",
+    "ci-publish": "latest",
+    "conventional-github-releaser": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
     "mocha": "latest",
-    "nyc": "latest",
+    "nano-staged": "latest",
+    "npm-check-updates": "latest",
+    "prettier-standard": "latest",
     "should": "latest",
-    "standard": "latest"
+    "simple-git-hooks": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "standard-version": "latest"
   },
   "engines": {
     "node": ">= 8"
@@ -42,12 +53,29 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
+    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard lib",
+    "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
+    "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
-    "test": "nyc mocha"
+    "release": "standard-version -a",
+    "release:github": "conventional-github-releaser -p angular",
+    "release:tags": "git push --follow-tags origin HEAD:master",
+    "test": "c8 mocha",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
   },
   "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "npx commitlint --edit",
+    "pre-commit": "npx nano-staged"
+  },
   "standard": {
     "env": "mocha"
   }

@@ -16,7 +16,6 @@ describe('whoops', function () {
         should(userError.name).be.equal(Error.name)
       })
     })
-
     ;[
       [TypeError, whoops.type],
       [RangeError, whoops.range],
@@ -34,18 +33,17 @@ describe('whoops', function () {
 
         try {
           throw userError('user not found')
-        } catch (err) {
-        }
+        } catch (err) {}
       })
     })
 
     it('attach props', function () {
-      const userError = whoops('UserError', {code: 'ENOVALID'})
+      const userError = whoops('UserError', { code: 'ENOVALID' })
       should(userError).be.a.Function()
       should(userError.name).be.equal(Error.name)
 
       try {
-        throw userError({message: 'user not found'})
+        throw userError({ message: 'user not found' })
       } catch (err) {
         should(err.message).be.equal('ENOVALID, user not found')
         should(err.code).be.equal('ENOVALID')
@@ -72,7 +70,7 @@ describe('whoops', function () {
       it('as object', function () {
         const userError = whoops('UserError')
         try {
-          throw userError({message: 'user not found'})
+          throw userError({ message: 'user not found' })
         } catch (err) {
           should(err).instanceof(userError)
           should(err).instanceof(Error)
@@ -86,7 +84,7 @@ describe('whoops', function () {
     it('passing message & code props', function () {
       const userError = whoops('UserError')
       try {
-        throw userError({message: 'user not found', code: 'ENOVALID'})
+        throw userError({ message: 'user not found', code: 'ENOVALID' })
       } catch (err) {
         should(err).instanceof(userError)
         should(err).instanceof(Error)
@@ -102,16 +100,16 @@ describe('whoops', function () {
       try {
         throw userError({
           username: 'kikobeats',
-          message: (props) => `user '${props.username}' not found`,
+          message: props => `user '${props.username}' not found`,
           code: 'ENOVALID'
         })
       } catch (err) {
         should(err).instanceof(userError)
         should(err).instanceof(Error)
 
-        should(err.message).be.equal('ENOVALID, user \'kikobeats\' not found')
+        should(err.message).be.equal("ENOVALID, user 'kikobeats' not found")
         should(err.code).be.equal('ENOVALID')
-        should(err.description).be.equal('user \'kikobeats\' not found')
+        should(err.description).be.equal("user 'kikobeats' not found")
         should(err.username).be.equal('kikobeats')
       }
     })
