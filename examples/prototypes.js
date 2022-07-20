@@ -1,8 +1,8 @@
 'use strict'
 
-var whoops = require('..')
-var DAMNError = whoops.create('DAMNError')
-var err = DAMNError('Something is wrong')
+const whoops = require('..')
+const DAMNError = whoops.create('DAMNError')
+const err = DAMNError('Something is wrong')
 
 console.log('static ::')
 console.log(DAMNError)

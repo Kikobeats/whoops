@@ -1,14 +1,12 @@
 'use strict'
 
-var fs = require('fs')
-var Whoops = require('..')
+const fs = require('fs')
+const Whoops = require('..')
 
 console.log('\n[ Standard NodeJS errors ]\n')
 
-var data
-
 try {
-  data = fs.readFileSync('filename')
+  fs.readFileSync('filename')
 } catch (err) {
   console.log(' message :', err.message)
   console.log(' name\t :', err.name)
@@ -16,15 +14,15 @@ try {
   console.log(' path\t :', err.path)
   console.log(' errno\t :', err.errno)
 
-// { [Error: ENOENT, open 'filename']
-//   errno: 34,
-//   code: 'ENOENT',
-//   path: 'filename' }
+  // { [Error: ENOENT, open 'filename']
+  //   errno: 34,
+  //   code: 'ENOENT',
+  //   path: 'filename' }
 }
 
 console.log('\n[ Whoops Object Constructor ]\n')
 
-var errObjt = new Whoops({
+const errObjt = new Whoops({
   message: 'The format of the JSON is invalid',
   name: 'JSONError',
   code: 'NotValidJSON',
@@ -42,7 +40,7 @@ console.log(' foo\t :', errObjt.foo)
 
 console.log('\n[ Whoops String constructor ]\n')
 
-var errString = new Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid')
+const errString = new Whoops('JSONError', 'NotValidJSON', 'The format of the JSON is invalid')
 
 console.log(' message :', errString.message)
 console.log(' name\t :', errString.name)

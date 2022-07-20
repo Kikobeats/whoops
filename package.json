@@ -3,7 +3,7 @@
   "description": "It makes simple throw qualified errors.",
   "homepage": "https://github.com/Kikobeats/whoops",
   "version": "4.1.1",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
@@ -49,13 +49,13 @@
     "node": ">= 8"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "standard lib",
+    "lint": "standard",
     "postrelease": "npm run release:tags && npm run release:github && (ci-publish || npm publish --access=public)",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
@@ -88,6 +88,9 @@
     "pre-commit": "npx nano-staged"
   },
   "standard": {
-    "env": "mocha"
+    "globals": [
+      "describe",
+      "it"
+    ]
   }
 }
