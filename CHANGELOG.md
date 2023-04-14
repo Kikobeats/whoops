@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 4.1.3 (2023-04-14)
+
+
+### Bug Fixes
+
+* **extend-error:** handle undefined error#stack ([#42](https://github.com/kikobeats/whoops/issues/42)) ([2dc0cd1](https://github.com/kikobeats/whoops/commit/2dc0cd156d71d6b5e51958627f766a3b6ca9048b))
+
 ### 4.1.2 (2022-07-20)
 
 ### 4.1.1 (2022-05-27)
