@@ -12,7 +12,7 @@ function createExtendError (ErrorClass, classProps) {
     const errorProps = isString(props) ? { message: props } : props
     addErrorProps(error, classProps, errorProps)
 
-    error.stack = cleanStack(error.stack)
+    error.stack = typeof error.stack === 'string' ? cleanStack(error.stack) : undefined
     return error
   }
 
