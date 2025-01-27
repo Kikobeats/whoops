@@ -33,10 +33,6 @@
     "simple",
     "throw"
   ],
-  "dependencies": {
-    "clean-stack": "~3.0.0",
-    "mimic-fn": "~3.1.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",

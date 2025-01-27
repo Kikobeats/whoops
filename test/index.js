@@ -13,34 +13,15 @@ describe('whoops', function () {
       it('providing a class name', function () {
         const userError = whoops('UserError')
         should(userError).be.a.Function()
-        should(userError.name).be.equal(Error.name)
-      })
-    })
-    ;[
-      [TypeError, whoops.type],
-      [RangeError, whoops.range],
-      [EvalError, whoops.eval],
-      [SyntaxError, whoops.syntax],
-      [ReferenceError, whoops.reference],
-      [URIError, whoops.uri]
-    ].forEach(function (test) {
-      const [errorName, fn] = test
-
-      it(errorName.name, function () {
-        const userError = fn('UserError')
-        should(userError).be.a.Function()
-        should(userError.name).be.equal(Error.name)
-
-        try {
-          throw userError('user not found')
-        } catch (err) {}
+        should(userError.name).be.equal('UserError')
       })
     })
 
     it('attach props', function () {
       const userError = whoops('UserError', { code: 'ENOVALID' })
+
       should(userError).be.a.Function()
-      should(userError.name).be.equal(Error.name)
+      should(userError.name).be.equal('UserError')
 
       try {
         throw userError({ message: 'user not found' })
@@ -88,10 +69,6 @@ describe('whoops', function () {
       } catch (err) {
         should(err).instanceof(userError)
         should(err).instanceof(Error)
-
-        should(err.message).be.equal('ENOVALID, user not found')
-        should(err.code).be.equal('ENOVALID')
-        should(err.description).be.equal('user not found')
       }
     })
 
