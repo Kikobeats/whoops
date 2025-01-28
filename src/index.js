@@ -3,7 +3,7 @@
 function createErrorClass (ErrorClass) {
   return (name, defaults) => {
     class CustomError extends ErrorClass {
-      constructor (raw) {
+      constructor (raw = {}) {
         super(raw)
 
         const { message, ...props } = typeof raw === 'string' ? { message: raw } : raw
