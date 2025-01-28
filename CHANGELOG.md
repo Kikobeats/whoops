@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 5.0.1 (2025-01-28)
+
+
+### Bug Fixes
+
+* merging props ([#47](https://github.com/kikobeats/whoops/issues/47)) ([e9e24d6](https://github.com/kikobeats/whoops/commit/e9e24d6c1ad2d9cd178c056bfd09889216af0d7f))
+
 ## 5.0.0 (2025-01-28)
 
 
