@@ -11,6 +11,7 @@
 - An easy way to create qualified errors.
 - Using the standard `Error` interface in browser and NodeJS.
 - Attach extra information, being flexible with whatever user case.
+- Less than 50 lines (~500 bytes)
 
 This library is a compromise to provide a clean API for use `Error` native class.
 
