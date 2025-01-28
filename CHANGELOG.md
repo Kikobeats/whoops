@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 5.0.0 (2025-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* simplify implementation (#46)
+
+### Features
+
+* simplify implementation ([#46](https://github.com/kikobeats/whoops/issues/46)) ([86f8d7a](https://github.com/kikobeats/whoops/commit/86f8d7a124c343cee2c790af7f5a51fd73b0a171))
+
 ### 4.1.8 (2025-01-27)
 
 ### 4.1.7 (2023-10-29)
