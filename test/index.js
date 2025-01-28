@@ -15,22 +15,21 @@ describe('constructor', () => {
     [URIError, whoops.uri]
   ].forEach(([ErrorClass, whoops]) => {
     describe(ErrorClass.name, () => {
-      it('without providing a class name', t => {
-        const userError = whoops()
-        t.assert.equal(typeof userError, 'function')
-        t.assert.equal(userError.name, ErrorClass.name)
-        t.assert.equal(userError().name, ErrorClass.name)
-        t.assert.equal(userError() instanceof userError, true)
-        t.assert.equal(userError() instanceof ErrorClass, true)
-      })
-
-      it('providing a class name', t => {
-        const userError = whoops('UserError')
-        t.assert.equal(typeof userError, 'function')
-        t.assert.equal(userError.name, 'UserError')
-        t.assert.equal(userError().name, 'UserError')
-        t.assert.equal(userError() instanceof userError, true)
-        t.assert.equal(userError() instanceof ErrorClass, true)
+      ;[
+        { name: 'without providing a class name', input: undefined },
+        { name: 'providing a class name', input: 'UserError' }
+      ].forEach(({ name, input }) => {
+        it(name, t => {
+          const userError = whoops(input)
+          t.assert.equal(typeof userError, 'function')
+          t.assert.equal(userError.name, input || ErrorClass.name)
+          t.assert.equal(userError().name, input || ErrorClass.name)
+          t.assert.equal(userError().message, undefined)
+          t.assert.equal(userError().description, undefined)
+          t.assert.equal(userError().code, undefined)
+          t.assert.equal(userError() instanceof userError, true)
+          t.assert.equal(userError() instanceof ErrorClass, true)
+        })
       })
     })
   })

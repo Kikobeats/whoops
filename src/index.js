@@ -10,13 +10,9 @@ function createErrorClass (ErrorClass) {
         const mergedProps = Object.assign({}, defaults, props)
         Object.keys(mergedProps).forEach(key => (this[key] = mergedProps[key]))
 
-        this.description = typeof message === 'function' ? message(this) : message
+        if (message) this.description = typeof message === 'function' ? message(this) : message
         this.message = this.code ? `${this.code}, ${this.description}` : this.description
         this.name = name || ErrorClass.name
-
-        if (Error.captureStackTrace) {
-          Error.captureStackTrace(this, CustomError)
-        }
       }
     }
 
