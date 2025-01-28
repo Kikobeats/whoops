@@ -5,19 +5,33 @@ const { describe, it } = require('node:test')
 const whoops = require('..')
 
 describe('constructor', () => {
-  describe('Error', () => {
-    it('without providing a class name', t => {
-      const userError = whoops()
-      t.assert.equal(typeof userError, 'function')
-      t.assert.equal(userError.name, Error.name)
-      t.assert.equal(userError().name, 'Error')
-    })
+  ;[
+    [Error, whoops],
+    [TypeError, whoops.type],
+    [RangeError, whoops.range],
+    [EvalError, whoops.eval],
+    [SyntaxError, whoops.syntax],
+    [ReferenceError, whoops.reference],
+    [URIError, whoops.uri]
+  ].forEach(([ErrorClass, whoops]) => {
+    describe(ErrorClass.name, () => {
+      it('without providing a class name', t => {
+        const userError = whoops()
+        t.assert.equal(typeof userError, 'function')
+        t.assert.equal(userError.name, ErrorClass.name)
+        t.assert.equal(userError().name, ErrorClass.name)
+        t.assert.equal(userError() instanceof userError, true)
+        t.assert.equal(userError() instanceof ErrorClass, true)
+      })
 
-    it('providing a class name', t => {
-      const userError = whoops('UserError')
-      t.assert.equal(typeof userError, 'function')
-      t.assert.equal(userError.name, 'UserError')
-      t.assert.equal(userError().name, 'UserError')
+      it('providing a class name', t => {
+        const userError = whoops('UserError')
+        t.assert.equal(typeof userError, 'function')
+        t.assert.equal(userError.name, 'UserError')
+        t.assert.equal(userError().name, 'UserError')
+        t.assert.equal(userError() instanceof userError, true)
+        t.assert.equal(userError() instanceof ErrorClass, true)
+      })
     })
   })
 

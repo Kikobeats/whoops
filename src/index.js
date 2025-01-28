@@ -39,3 +39,9 @@ function createErrorClass (ErrorClass) {
 }
 
 module.exports = createErrorClass(Error)
+module.exports.type = createErrorClass(TypeError)
+module.exports.range = createErrorClass(RangeError)
+module.exports.eval = createErrorClass(EvalError)
+module.exports.syntax = createErrorClass(SyntaxError)
+module.exports.reference = createErrorClass(ReferenceError)
+module.exports.uri = createErrorClass(URIError)
