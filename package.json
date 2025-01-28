@@ -33,10 +33,6 @@
     "simple",
     "throw"
   ],
-  "dependencies": {
-    "clean-stack": "~3.0.0",
-    "mimic-fn": "~3.1.0"
-  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
@@ -46,7 +42,6 @@
     "finepack": "latest",
     "git-authors-cli": "latest",
     "github-generate-release": "latest",
-    "mocha": "latest",
     "nano-staged": "latest",
     "should": "latest",
     "simple-git-hooks": "latest",
@@ -70,7 +65,7 @@
     "release": "standard-version -a",
     "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "test": "c8 mocha"
+    "test": "c8 node --test"
   },
   "license": "MIT",
   "commitlint": {

@@ -1,117 +1,91 @@
-const should = require('should')
+'use strict'
+
+const { describe, it } = require('node:test')
+
 const whoops = require('..')
 
-describe('whoops', function () {
-  describe('constructor', function () {
-    describe('Error', function () {
-      it('without providing a class name', function () {
-        const userError = whoops()
-        should(userError).be.a.Function()
-        should(userError.name).be.equal(Error.name)
+describe('constructor', () => {
+  ;[
+    [Error, whoops],
+    [TypeError, whoops.type],
+    [RangeError, whoops.range],
+    [EvalError, whoops.eval],
+    [SyntaxError, whoops.syntax],
+    [ReferenceError, whoops.reference],
+    [URIError, whoops.uri]
+  ].forEach(([ErrorClass, whoops]) => {
+    describe(ErrorClass.name, () => {
+      ;[
+        { name: 'without providing a class name', input: undefined },
+        { name: 'providing a class name', input: 'UserError' }
+      ].forEach(({ name, input }) => {
+        it(name, t => {
+          const userError = whoops(input)
+          t.assert.equal(typeof userError, 'function')
+          t.assert.equal(userError.name, input || ErrorClass.name)
+          t.assert.equal(userError().name, input || ErrorClass.name)
+          t.assert.equal(userError().message, undefined)
+          t.assert.equal(userError().description, undefined)
+          t.assert.equal(userError().code, undefined)
+          t.assert.equal(userError() instanceof userError, true)
+          t.assert.equal(userError() instanceof ErrorClass, true)
+        })
       })
-
-      it('providing a class name', function () {
-        const userError = whoops('UserError')
-        should(userError).be.a.Function()
-        should(userError.name).be.equal(Error.name)
-      })
-    })
-    ;[
-      [TypeError, whoops.type],
-      [RangeError, whoops.range],
-      [EvalError, whoops.eval],
-      [SyntaxError, whoops.syntax],
-      [ReferenceError, whoops.reference],
-      [URIError, whoops.uri]
-    ].forEach(function (test) {
-      const [errorName, fn] = test
-
-      it(errorName.name, function () {
-        const userError = fn('UserError')
-        should(userError).be.a.Function()
-        should(userError.name).be.equal(Error.name)
-
-        try {
-          throw userError('user not found')
-        } catch (err) {}
-      })
-    })
-
-    it('attach props', function () {
-      const userError = whoops('UserError', { code: 'ENOVALID' })
-      should(userError).be.a.Function()
-      should(userError.name).be.equal(Error.name)
-
-      try {
-        throw userError({ message: 'user not found' })
-      } catch (err) {
-        should(err.message).be.equal('ENOVALID, user not found')
-        should(err.code).be.equal('ENOVALID')
-        should(err.description).be.equal('user not found')
-      }
     })
   })
 
-  describe('instance', function () {
-    describe('passing message prop', function () {
-      it('as string', function () {
-        const userError = whoops('UserError')
-        try {
-          throw userError('user not found')
-        } catch (err) {
-          should(err).instanceof(userError)
-          should(err).instanceof(Error)
+  it('attach props', t => {
+    const userError = whoops('UserError', { code: 'ENOVALID' })
+    t.assert.equal(typeof userError, 'function')
+    t.assert.equal(userError.name, 'UserError')
+    const error = userError({ message: 'user not found' })
+    t.assert.equal(error.message, 'ENOVALID, user not found')
+    t.assert.equal(error.code, 'ENOVALID')
+    t.assert.equal(error.description, 'user not found')
+  })
 
-          should(err.message).be.equal('user not found')
-          should(err.description).be.equal('user not found')
-        }
+  describe('instance', () => {
+    describe('passing message prop', () => {
+      it('as string', t => {
+        t.plan(4)
+        const userError = whoops('UserError')
+        const error = userError('user not found')
+        t.assert.equal(error instanceof userError, true)
+        t.assert.equal(error instanceof Error, true)
+        t.assert.equal(error.message, 'user not found')
+        t.assert.equal(error.description, 'user not found')
       })
 
-      it('as object', function () {
+      it('as object', t => {
         const userError = whoops('UserError')
-        try {
-          throw userError({ message: 'user not found' })
-        } catch (err) {
-          should(err).instanceof(userError)
-          should(err).instanceof(Error)
-
-          should(err.message).be.equal('user not found')
-          should(err.description).be.equal('user not found')
-        }
+        const error = userError({ message: 'user not found' })
+        t.assert.equal(error instanceof userError, true)
+        t.assert.equal(error instanceof Error, true)
+        t.assert.equal(error.message, 'user not found')
+        t.assert.equal(error.description, 'user not found')
       })
     })
 
-    it('passing message & code props', function () {
+    it('passing message & code props', t => {
       const userError = whoops('UserError')
-      try {
-        throw userError({ message: 'user not found', code: 'ENOVALID' })
-      } catch (err) {
-        should(err).instanceof(userError)
-        should(err).instanceof(Error)
-
-        should(err.message).be.equal('ENOVALID, user not found')
-        should(err.code).be.equal('ENOVALID')
-        should(err.description).be.equal('user not found')
-      }
+      const error = userError({ message: 'user not found', code: 'ENOVALID' })
+      t.assert.equal(error instanceof userError, true)
+      t.assert.equal(error instanceof Error, true)
     })
 
-    it('passing message, code & extra props', function () {
+    it('passing message, code & extra props', t => {
       const userError = whoops('UserError')
-      try {
-        throw userError({
-          username: 'kikobeats',
-          message: props => `user '${props.username}' not found`,
-          code: 'ENOVALID'
-        })
-      } catch (err) {
-        should(err).instanceof(userError)
-        should(err).instanceof(Error)
-
-        should(err.message).be.equal("ENOVALID, user 'kikobeats' not found")
-        should(err.code).be.equal('ENOVALID')
-        should(err.description).be.equal("user 'kikobeats' not found")
-        should(err.username).be.equal('kikobeats')
-      }
+      const error = userError({
+        username: 'kikobeats',
+        message: props => `user '${props.username}' not found`,
+        code: 'ENOVALID'
+      })
+      t.assert.equal(error instanceof userError, true)
+      t.assert.equal(error instanceof Error, true)
+      t.assert.equal(error.message, "ENOVALID, user 'kikobeats' not found")
+      t.assert.equal(error.code, 'ENOVALID')
+      t.assert.equal(error.description, "user 'kikobeats' not found")
+      t.assert.equal(error.username, 'kikobeats')
     })
   })
 })
