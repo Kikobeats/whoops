@@ -12,7 +12,6 @@ function createErrorClass (ErrorClass) {
 
         this.description = typeof message === 'function' ? message(this) : message
         this.message = this.code ? `${this.code}, ${this.description}` : this.description
-
         this.name = name || ErrorClass.name
 
         if (Error.captureStackTrace) {

@@ -33,6 +33,9 @@
     "simple",
     "throw"
   ],
+  "dependencies": {
+    "ava": "~6.2.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
@@ -42,7 +45,6 @@
     "finepack": "latest",
     "git-authors-cli": "latest",
     "github-generate-release": "latest",
-    "mocha": "latest",
     "nano-staged": "latest",
     "should": "latest",
     "simple-git-hooks": "latest",
@@ -66,7 +68,7 @@
     "release": "standard-version -a",
     "release:github": "github-generate-release",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "test": "c8 mocha"
+    "test": "c8 node --test"
   },
   "license": "MIT",
   "commitlint": {
@@ -91,6 +93,7 @@
       "finepack"
     ]
   },
+  "packageManager": "pnpm@7.33.5+sha256.1416b06a1fbe95d370f393dea02318d71f11c9db6fe2d3e4f33710504859a5ae",
   "simple-git-hooks": {
     "commit-msg": "npx commitlint --edit",
     "pre-commit": "npx nano-staged"
