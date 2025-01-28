@@ -5,12 +5,13 @@ function createErrorClass (ErrorClass) {
     class CustomError extends ErrorClass {
       constructor (raw = {}) {
         super(raw)
-
-        const { message, ...props } = typeof raw === 'string' ? { message: raw } : raw
-        const mergedProps = Object.assign({}, defaults, props)
-        Object.keys(mergedProps).forEach(key => (this[key] = mergedProps[key]))
-
-        if (message) this.description = typeof message === 'function' ? message(this) : message
+        const { message, ...props } = Object.assign(
+          {},
+          defaults,
+          typeof raw === 'string' ? { message: raw } : raw
+        )
+        Object.keys(props).forEach(key => (this[key] = props[key]))
+        if (message) this.description = typeof message === 'function' ? message(props) : message
         this.message = this.code ? `${this.code}, ${this.description}` : this.description
         this.name = name || ErrorClass.name
       }

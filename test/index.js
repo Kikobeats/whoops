@@ -47,7 +47,6 @@ describe('constructor', () => {
   describe('instance', () => {
     describe('passing message prop', () => {
       it('as string', t => {
-        t.plan(4)
         const userError = whoops('UserError')
         const error = userError('user not found')
         t.assert.equal(error instanceof userError, true)
@@ -67,8 +66,17 @@ describe('constructor', () => {
     })
 
     it('passing message & code props', t => {
-      const userError = whoops('UserError')
-      const error = userError({ message: 'user not found', code: 'ENOVALID' })
+      const userError = whoops('UserError', {
+        message: ({ username }) => `user '${username}' not found`,
+        code: 'ENOVALID'
+      })
+
+      const error = userError({ username: 'kikobeats' })
+
+      t.assert.equal(error.message, "ENOVALID, user 'kikobeats' not found")
+      t.assert.equal(error.code, 'ENOVALID')
+      t.assert.equal(error.description, "user 'kikobeats' not found")
+
       t.assert.equal(error instanceof userError, true)
       t.assert.equal(error instanceof Error, true)
     })
