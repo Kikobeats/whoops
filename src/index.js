@@ -17,6 +17,11 @@ function createErrorClass (ErrorClass) {
       }
     }
 
+    Object.defineProperty(CustomError, 'name', {
+      value: name || ErrorClass.name,
+      writable: false
+    })
+
     // Function to create an instance, allowing use without `new`
     function CustomErrorFactory (props) {
       return new CustomError(props)
