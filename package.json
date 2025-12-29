@@ -2,7 +2,7 @@
   "name": "whoops",
   "description": "It makes simple throw qualified errors.",
   "homepage": "https://github.com/Kikobeats/whoops",
-  "version": "5.0.5",
+  "version": "5.0.6",
   "main": "src/index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
