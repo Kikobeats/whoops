@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 5.1.0 (2026-01-22)
+
+
+### Features
+
+* add cause support ([#54](https://github.com/kikobeats/whoops/issues/54)) ([4728e5b](https://github.com/kikobeats/whoops/commit/4728e5b4a91af0d01800c14aec871235e052daf7))
+
 ### 5.0.7 (2025-12-29)
 
 ### 5.0.6 (2025-12-29)
