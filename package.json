@@ -1,6 +1,6 @@
 {
   "name": "whoops",
-  "description": "It makes simple throw qualified errors.",
+  "description": "Create and throw named, qualified Error subclasses with a small factory API.",
   "homepage": "https://github.com/Kikobeats/whoops",
   "version": "5.1.2",
   "main": "src/index.js",
@@ -27,16 +27,20 @@
     "url": "https://github.com/Kikobeats/whoops/issues"
   },
   "keywords": [
+    "class",
     "constructor",
     "custom",
     "error",
-    "simple",
-    "throw"
+    "exception",
+    "factory",
+    "named",
+    "qualified",
+    "throw",
+    "whoops"
   ],
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "@ksmithut/prettier-standard": "latest",
     "c8": "latest",
     "ci-publish": "latest",
     "finepack": "latest",
@@ -80,7 +84,7 @@
   },
   "nano-staged": {
     "*.js": [
-      "prettier-standard",
+      "npx @kikobeats/prettier-standard",
       "standard --fix"
     ],
     "*.md": [
