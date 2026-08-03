@@ -2,7 +2,7 @@
   "name": "whoops",
   "description": "Create and throw named, qualified Error subclasses with a small factory API.",
   "homepage": "https://github.com/Kikobeats/whoops",
-  "version": "5.1.3",
+  "version": "5.1.4",
   "main": "src/index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
