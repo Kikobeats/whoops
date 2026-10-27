@@ -98,6 +98,22 @@ describe('constructor', () => {
       t.assert.equal(error.username, 'kikobeats')
     })
 
+    it('constructing from the error constructor', t => {
+      const userError = whoops('UserError', { code: 'ENOVALID' })
+      const UserError = userError().constructor
+      const error = new UserError({ message: 'user not found', username: 'kikobeats' })
+      t.assert.equal(error instanceof userError, true)
+      t.assert.equal(error instanceof Error, true)
+      t.assert.equal(error.name, 'UserError')
+      t.assert.equal(error.message, 'ENOVALID, user not found')
+      t.assert.equal(error.description, 'user not found')
+      t.assert.equal(error.username, 'kikobeats')
+      t.assert.deepEqual(
+        Object.keys(error),
+        Object.keys(userError({ message: 'user not found', username: 'kikobeats' }))
+      )
+    })
+
     describe('passing cause prop', () => {
       it('with Error object as cause', t => {
         const userError = whoops('UserError')

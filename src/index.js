@@ -2,18 +2,23 @@
 
 function createErrorClass (ErrorClass) {
   return (name, defaults) => {
+    const assignProps = (error, raw) => {
+      const { message, ...props } = Object.assign(
+        {},
+        defaults,
+        typeof raw === 'string' ? { message: raw } : raw
+      )
+      Object.keys(props).forEach(key => (error[key] = props[key]))
+      if (message) error.description = typeof message === 'function' ? message(props) : message
+      error.message = error.code ? `${error.code}, ${error.description}` : error.description
+      error.name = name || ErrorClass.name
+      return error
+    }
+
     class CustomError extends ErrorClass {
       constructor (raw = {}) {
         super(raw)
-        const { message, ...props } = Object.assign(
-          {},
-          defaults,
-          typeof raw === 'string' ? { message: raw } : raw
-        )
-        Object.keys(props).forEach(key => (this[key] = props[key]))
-        if (message) this.description = typeof message === 'function' ? message(props) : message
-        this.message = this.code ? `${this.code}, ${this.description}` : this.description
-        this.name = name || ErrorClass.name
+        assignProps(this, raw)
       }
     }
 
@@ -23,8 +28,8 @@ function createErrorClass (ErrorClass) {
     })
 
     // Function to create an instance, allowing use without `new`
-    function CustomErrorFactory (props) {
-      return new CustomError(props)
+    function CustomErrorFactory (raw = {}) {
+      return assignProps(Object.setPrototypeOf(new ErrorClass(raw), CustomError.prototype), raw)
     }
 
     // Ensure the function's name matches the class name for consistency
