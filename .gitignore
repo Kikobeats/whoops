@@ -31,3 +31,9 @@ coverage
 # Other
 ############################
 .node_history
+
+############################
+# Benchmark
+############################
+benchmark-output.json
+cache/
