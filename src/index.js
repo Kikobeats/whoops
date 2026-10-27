@@ -1,15 +1,16 @@
 'use strict'
 
+const omitMessage = ({ message, ...props }) => props
+
 function createErrorClass (ErrorClass) {
   return (name, defaults) => {
     const assignProps = (error, raw) => {
-      const { message, ...props } = Object.assign(
-        {},
-        defaults,
-        typeof raw === 'string' ? { message: raw } : raw
-      )
-      Object.keys(props).forEach(key => (error[key] = props[key]))
-      if (message) error.description = typeof message === 'function' ? message(props) : message
+      const merged = Object.assign({}, defaults, typeof raw === 'string' ? { message: raw } : raw)
+      const { message } = merged
+      for (const key of Object.keys(merged)) {
+        if (key !== 'message') error[key] = merged[key]
+      }
+      if (message) { error.description = typeof message === 'function' ? message(omitMessage(merged)) : message }
       error.message = error.code ? `${error.code}, ${error.description}` : error.description
       error.name = name || ErrorClass.name
       return error
