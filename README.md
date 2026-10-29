@@ -1,8 +1,8 @@
 # whoops
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/whoops.svg?style=flat-square)
-[![Coverage Status](https://img.shields.io/coveralls/Kikobeats/whoops.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/whoops)
-[![NPM Status](http://img.shields.io/npm/dm/whoops.svg?style=flat-square)](https://www.npmjs.org/package/whoops)
+[![Last version](https://img.shields.io/github/v/tag/Kikobeats/whoops?style=flat-square)](https://github.com/Kikobeats/whoops/releases)
+[![Coverage Status](https://img.shields.io/coverallsCoverage/github/Kikobeats/whoops?style=flat-square)](https://coveralls.io/github/Kikobeats/whoops)
+[![NPM Status](https://img.shields.io/npm/dm/whoops?style=flat-square)](https://www.npmjs.com/package/whoops)
 
 > It makes simple throw qualified errors. Inspired in [errno](https://github.com/rvagg/node-errno), [create-error-class](https://github.com/floatdrop/create-error-class) and [fault](https://github.com/wooorm/fault).
 
@@ -133,7 +133,6 @@ switch (err.name) {
 
 - [create-error-class](https://github.com/floatdrop/create-error-class) – Create error class.
 - [fault](https://github.com/wooorm/fault) – Functional errors with formatted output.
-
 
 ## License
 
